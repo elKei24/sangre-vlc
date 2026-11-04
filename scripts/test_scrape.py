@@ -19,9 +19,14 @@ assert list(scrape.queries("VALENCIA - AUTORIDAD PORTUARIA (SOLO EMPLEADOS) ANTE
 assert scrape.street("AGOST-CENTRO SOCIAL, GIMNASIO, AVDA. CONSELL PAIS VALENCIÀ, 16-18") == "AVDA. CONSELL PAIS VALENCIÀ, 16-18"
 assert scrape.venue("ALICANTE-C.S.LOS ÁNGELES, GIMNASIO MATRONA, C/ LINARES, 9") == "CENTRO DE SALUD LOS ÁNGELES"
 assert scrape.venue("ALCOI-CIP FP BATOI SALÓN DE ACTOS, C/ SOCIEDAD UNIÓN MUSICAL, 8") == "CIP FP BATOI"
+assert list(scrape.queries("VILA-REAL-PAMESA CERÁMICA (Solo Empleados), CL. PINA DE MONTALGRAO, 2 (CTRA. ONDA)", "VILA-REAL")) == [
+    "CL. PINA DE MONTALGRAO, 2", "PAMESA CERÁMICA", "CL. PINA DE MONTALGRAO"]
 assert scrape.venue("ALTEA - CIM, SALA 2, C/ MARINA BAIXA, 6") == "CIM"
 assert scrape.street("BIAR-CASA DE CULTURA, PLANTA BAJA, PLAZA DEL CONVENTO") == "PLAZA DEL CONVENTO"
 assert scrape.town_name("ALMASSORA/ALMAZORA") == "ALMASSORA"
 assert scrape.town_name("ALCUDIA, L'") == "L'ALCUDIA"
 assert scrape.town_name("VILA JOIOSA (LA)") == "LA VILA JOIOSA"
+assert scrape.matches("AVD. MEDITERRÁNEO, 2", "Centre de Salut Moncada Avinguda de la Mediterrània") == 1
+assert scrape.matches("C/ SAN JUAN DE RIBERA, 6", "S.S. Juan XXIII") == 0.5
+assert scrape.matches("MONCADA", "Montcada / Moncada") == 1
 print("ok")

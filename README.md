@@ -4,7 +4,7 @@
 
 Map of the blood donation points in the Comunitat Valenciana (Valencia, Castellón, Alicante). Select a pin to see the dates and hours. Use the date filter to show only the points available in a given period.
 
-The data comes from the [Centro de Transfusión](https://centro-transfusion.san.gva.es/es/puntos-de-donacion) web page. That page does not send CORS headers, so a browser cannot read it directly. A GitHub Actions workflow runs the scraper each day, geocodes new locations with Nominatim and commits `site/data.json`. A second workflow deploys the `site` folder to GitHub Pages on each push to `main`.
+The data comes from the [Centro de Transfusión](https://centro-transfusion.san.gva.es/es/puntos-de-donacion) web page. That page does not send CORS headers, so a browser cannot read it directly. A GitHub Actions workflow runs the scraper each day, geocodes new locations with Nominatim (fallback: Photon, filtered by town and name) and commits `site/data.json`. A second workflow deploys the `site` folder to GitHub Pages on each push to `main`.
 
 ## Layout
 
