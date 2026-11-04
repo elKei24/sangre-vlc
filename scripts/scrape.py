@@ -66,62 +66,72 @@ def town_name(town):
 STREET_RE = re.compile(
     r"\b(C/|CALLE|CARRER|AVDA?\.?|AVINGUDA|AVENIDA|AV\.|PLAZA|PLAÇA|PL\.|CTRA\.?|CARRETERA|"
     r"CAMI|CAMINO|PASEO|PASSEIG|POL\.?|POLIGONO|POLÍGONO|PARTIDA|RONDA|GRAN VIA|PARC\b|PARQUE)", re.I)
-ABBREV = {"C.S.": "CENTRO DE SALUD", "C.S": "CENTRO DE SALUD", "HOSP.": "HOSPITAL",
+ROOM_RE = re.compile(
+    r"\b(ANTESALA|SAL[OÓ]N? D(E |')ACT[EO]S|SALA|SALITA|PLANTA|HALL|GIMNASIO|BIBLIOTECA|AULA|"
+    r"VEST[IÍ]BULO|PASILLO|LOCAL|SOLO|S[OÓ]LO|EXCLUSIVA)\b.*$", re.I)
+ABBREV = {"C.S.": "CENTRO DE SALUD ", "C.S": "CENTRO DE SALUD ", "HOSP.": "HOSPITAL",
           "I.E.S.": "IES", "C.E.I.P.": "CEIP", "AJUNT.": "AJUNTAMENT", "AYTO.": "AYUNTAMIENTO"}
 
 
 def venue(loc):
-    """'ALCOI-CIP FP BATOI SALÓN DE ACTOS, C/ ...' -> 'CIP FP BATOI SALÓN DE ACTOS'"""
+    """'ALCOI-CIP FP BATOI SALÓN DE ACTOS, C/ ...' -> 'CIP FP BATOI'"""
     head = loc.split(",")[0]
     head = re.sub(r"^[^-]*-\s*", "", head)  # town prefix
-    head = head.split("-")[0].strip()
+    head = head.split("-")[0]
     for k, v in ABBREV.items():
         head = head.replace(k, v)
-    return head
+    return clean(ROOM_RE.sub("", head))
 
 
 def street(loc):
-    """Comma parts from the first one that names a street, e.g. 'C/ COLON, 44 - 46'"""
+    """Comma parts from the first one that names a street, e.g. 'C/ COLON, 44'"""
     parts = [p.strip() for p in loc.split(",")]
     for i, part in enumerate(parts[1:], 1):
         if STREET_RE.search(part):
-            s = ", ".join(p for p in parts[i:] if p)
+            s = ", ".join(p for p in parts[i:] if p).split(" - ")[0]
             return re.sub(r"\b(S/N|Nº|N\.|NUM\.?)\b", "", s, flags=re.I).strip(" ,")
     return ""
 
 
-def queries(town, loc, province):
-    """(query, approx) pairs from most to least specific."""
-    town = town_name(town)
+def queries(loc):
+    """Search texts from most to least specific; the town comes from the bounding box."""
     loc = re.sub(r"\(.*?\)", "", loc)
     st, ven = street(loc), venue(loc)
     if st:
-        yield f"{st}, {town}, {province}", False
+        yield st
     if ven:
-        yield f"{ven}, {town}, {province}", False
+        yield ven
     if st and re.search(r"\d", st):
-        yield f"{re.sub(r'[\d,].*$', '', st).strip()}, {town}, {province}", False
-    yield f"{town}, {province}", True
+        yield re.sub(r"[\d,].*$", "", st).strip()
 
 
-def nominatim(q):
+def nominatim(params):
     url = "https://nominatim.openstreetmap.org/search?" + urllib.parse.urlencode(
-        {"format": "json", "limit": 1, "countrycodes": "es", "q": q})
+        {"format": "json", "limit": 1, "countrycodes": "es", **params})
     res = json.loads(get(url))
     time.sleep(1.1)  # Nominatim usage policy: max 1 request/second
-    return res
+    return res[0] if res else None
 
 
-def geocode(cache, town, loc, province):
+def geocode(cache, towns, town, loc, province):
+    """Find the town first, then search the location only inside the town's bounding box."""
     key = f"{province}|{town}|{loc}"
     if key in cache:
         return cache[key]
+    name = town_name(town)
+    if name not in towns:
+        towns[name] = nominatim({"q": f"{name}, {province}"})
+    t = towns[name]
     hit = None
-    for q, approx in queries(town, loc, province):
-        res = nominatim(q)
-        if res:
-            hit = {"lat": float(res[0]["lat"]), "lon": float(res[0]["lon"]), "approx": approx}
-            break
+    if t:
+        south, north, west, east = t["boundingbox"]
+        for q in queries(loc):
+            r = nominatim({"q": q, "viewbox": f"{west},{south},{east},{north}", "bounded": 1})
+            if r:
+                hit = {"lat": float(r["lat"]), "lon": float(r["lon"]), "approx": False}
+                break
+        else:
+            hit = {"lat": float(t["lat"]), "lon": float(t["lon"]), "approx": True}
     cache[key] = hit
     return hit
 
@@ -146,12 +156,13 @@ def main():
         if n == 0:
             sys.exit(f"no rows parsed for {province}; page layout changed?")
     out = []
+    towns = {}
     new = sum(k not in cache for k in places)
     print(f"{len(places)} places, {new} to geocode", file=sys.stderr)
     for i, (key, p) in enumerate(places.items(), 1):
         if i % 25 == 0:
             print(f"{i}/{len(places)}", file=sys.stderr)
-        g = geocode(cache, p["town"], p["location"], p["province"])
+        g = geocode(cache, towns, p["town"], p["location"], p["province"])
         if not g:
             print(f"not geocoded: {key}", file=sys.stderr)
         out.append({**p, **(g or {})})
