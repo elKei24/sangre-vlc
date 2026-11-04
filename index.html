@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Blood donation map · Comunitat Valenciana</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
+<style>
+  html, body { height: 100%; margin: 0; font: 14px/1.4 system-ui, sans-serif; }
+  body { display: flex; flex-direction: column; }
+  header { display: flex; flex-wrap: wrap; gap: 8px 16px; align-items: center; padding: 8px 12px; background: #b3202a; color: #fff; }
+  header h1 { font-size: 16px; margin: 0 8px 0 0; }
+  header label { display: flex; align-items: center; gap: 4px; }
+  header a { color: #fff; }
+  header small { margin-left: auto; opacity: .85; }
+  #map { flex: 1; }
+  .popup h3 { margin: 0 0 2px; font-size: 14px; }
+  .popup .town { color: #666; margin-bottom: 6px; }
+  .popup ul { margin: 0; padding-left: 18px; }
+  .popup .approx { color: #b3202a; font-size: 12px; }
+</style>
+</head>
+<body>
+<header>
+  <h1>🩸 Donate blood</h1>
+  <label>From <input type="date" id="from"></label>
+  <label>To <input type="date" id="to"></label>
+  <span id="count"></span>
+  <small id="meta"></small>
+</header>
+<div id="map"></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<script>
+const map = L.map('map').setView([39.3, -0.5], 8);
+L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+  maxZoom: 19, attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+}).addTo(map);
+const layer = L.layerGroup().addTo(map);
+const from = document.getElementById('from'), to = document.getElementById('to');
+const fmt = new Intl.DateTimeFormat('en-GB', { weekday: 'short', day: 'numeric', month: 'short' });
+let places = [];
+
+function render() {
+  layer.clearLayers();
+  let n = 0;
+  for (const p of places) {
+    const slots = p.slots.filter(([d]) => (!from.value || d >= from.value) && (!to.value || d <= to.value));
+    if (!slots.length) continue;
+    n++;
+    const byDay = {};
+    for (const [d, h] of slots) (byDay[d] ??= []).push(h);
+    const items = Object.keys(byDay).sort().map(d =>
+      `<li><b>${fmt.format(new Date(d))}</b> · ${byDay[d].join(', ')}</li>`).join('');
+    L.marker([p.lat, p.lon], { opacity: p.approx ? .6 : 1 }).addTo(layer).bindPopup(
+      `<div class="popup"><h3>${p.location}</h3><div class="town">${p.town} · ${p.province}</div>
+       <ul>${items}</ul>${p.approx ? '<div class="approx">⚠ exact address not found, pin at town centre</div>' : ''}</div>`,
+      { maxWidth: 320 });
+  }
+  document.getElementById('count').textContent = `${n} location${n === 1 ? '' : 's'}`;
+}
+
+from.value = new Date().toISOString().slice(0, 10);
+from.oninput = to.oninput = render;
+fetch('data.json').then(r => r.json()).then(d => {
+  places = d.places;
+  document.getElementById('meta').innerHTML =
+    `Updated ${d.updated.slice(0, 16).replace('T', ' ')} UTC · <a href="https://centro-transfusion.san.gva.es/es/puntos-de-donacion" target="_blank" rel="noopener">source</a>`;
+  render();
+});
+</script>
+</body>
+</html>
