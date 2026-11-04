@@ -1,6 +1,8 @@
 # sangre-vlc
 
-Map of the blood donation points in the Comunitat Valenciana (Valencia, Castellón, Alicante).
+**Open the map: https://elkei24.github.io/sangre-vlc/**
+
+Map of the blood donation points in the Comunitat Valenciana (Valencia, Castellón, Alicante). Select a pin to see the dates and hours. Use the date filter to show only the points available in a given period.
 
 The data comes from the [Centro de Transfusión](https://centro-transfusion.san.gva.es/es/puntos-de-donacion) web page. That page does not send CORS headers, so a browser cannot read it directly. A GitHub Actions workflow runs `scrape.py` each day, geocodes new locations with Nominatim and commits `data.json`. GitHub Pages serves `index.html` and `data.json` as static files.
 
