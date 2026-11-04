@@ -22,3 +22,7 @@ python3 -m http.server     # open http://localhost:8000
 ## Deploy
 
 Enable GitHub Pages for the repository with the source "Deploy from a branch", branch `main`, folder `/`.
+
+## Dependency updates
+
+`.github/workflows/renovate.yml` runs a self-hosted Renovate each Monday. It needs the repository secret `RENOVATE_TOKEN`: a personal access token with `repo` and `workflow` scope, so that Renovate can also update the files in `.github/workflows`.

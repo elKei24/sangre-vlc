@@ -1,0 +1,7 @@
+{
+  "platform": "github",
+  "repositories": ["elKei24/sangre-vlc"],
+  "onboarding": false,
+  "requireConfig": "optional",
+  "branchPrefix": "renovate-self/"
+}
