@@ -7,6 +7,7 @@ import pathlib
 import re
 import sys
 import time
+import unicodedata
 import urllib.parse
 import urllib.request
 
@@ -64,7 +65,7 @@ def town_name(town):
 
 
 STREET_RE = re.compile(
-    r"\b(C/|CALLE|CARRER|AVDA?\.?|AVINGUDA|AVENIDA|AV\.|PLAZA|PLAÇA|PL\.|CTRA\.?|CARRETERA|"
+    r"\b(C/|CL\.?|CALLE|CARRER|AVDA?\.?|AVINGUDA|AVENIDA|AV\.|PLAZA|PLAÇA|PL\.|CTRA\.?|CARRETERA|"
     r"CAMI|CAMINO|PASEO|PASSEIG|POL\.?|POLIGONO|POLÍGONO|PARTIDA|RONDA|GRAN VIA|PARC\b|PARQUE)", re.I)
 ROOM_RE = re.compile(
     r"\b(ANTESALA|SAL[OÓ]N? D(E |')ACT[EO]S|SALA|SALITA|PLANTA|HALL|GIMNASIO|BIBLIOTECA|AULA|"
@@ -73,11 +74,14 @@ ABBREV = {"C.S.": "CENTRO DE SALUD ", "C.S": "CENTRO DE SALUD ", "HOSP.": "HOSPI
           "I.E.S.": "IES", "C.E.I.P.": "CEIP", "AJUNT.": "AJUNTAMENT", "AYTO.": "AYUNTAMIENTO"}
 
 
-def venue(loc):
+def venue(loc, town=""):
     """'ALCOI-CIP FP BATOI SALÓN DE ACTOS, C/ ...' -> 'CIP FP BATOI'"""
     head = loc.split(",")[0]
-    head = re.sub(r"^[^-]*-\s*", "", head)  # town prefix
-    head = head.split("-")[0]
+    if town and head.upper().startswith(town):
+        head = head[len(town):]
+    else:
+        head = re.sub(r"^[^-]*-", "", head)
+    head = head.strip(" -").split("-")[0]
     for k, v in ABBREV.items():
         head = head.replace(k, v)
     return clean(ROOM_RE.sub("", head))
@@ -93,10 +97,10 @@ def street(loc):
     return ""
 
 
-def queries(loc):
+def queries(loc, town=""):
     """Search texts from most to least specific; the town comes from the bounding box."""
     loc = re.sub(r"\(.*?\)", "", loc)
-    st, ven = street(loc), venue(loc)
+    st, ven = street(loc), venue(loc, town)
     if st:
         yield st
     if ven:
@@ -113,6 +117,44 @@ def nominatim(params):
     return res[0] if res else None
 
 
+STOP = {"del", "els", "les", "los", "las", "san", "sant", "santa", "num", "industrial", "autobanc", "autobanco"}
+
+
+def tokens(s):
+    s = unicodedata.normalize("NFKD", STREET_RE.sub(" ", s)).encode("ascii", "ignore").decode().lower()
+    return {t for t in re.findall(r"[a-z0-9]+", s) if len(t) >= 3 and t not in STOP}
+
+
+def similar(a, b):
+    # Same 4-letter prefix covers Spanish/Valencian spellings: UNIÓN ~ Unió, MEDITERRÁNEO ~ Mediterrània
+    return a == b or (len(a) >= 4 and len(b) >= 4 and a[:4] == b[:4])
+
+
+def matches(want, have):
+    """Share of the words in `want` that appear in `have`."""
+    want, have = tokens(want), tokens(have)
+    return sum(any(similar(w, h) for h in have) for w in want) / len(want) if want else 0
+
+
+def photon(q, box, town):
+    """Fuzzy search; the hit must lie in the town and repeat most words of the query."""
+    url = "https://photon.komoot.io/api/?" + urllib.parse.urlencode({"q": q, "bbox": box, "limit": 5})
+    features = json.loads(get(url))["features"]
+    time.sleep(1)
+    scored = []
+    for f in features:
+        p = f["properties"]
+        city = " ".join(p.get(k, "") for k in ("city", "district", "locality"))
+        text = " ".join(p.get(k, "") for k in ("name", "street"))
+        if p.get("osm_key") not in ("waterway", "natural", "railway", "boundary", "place") and matches(town, city):
+            scored.append((matches(q, text), f))
+    score, f = max(scored, key=lambda c: c[0], default=(0, None))
+    if score < 2 / 3:
+        return None
+    lon, lat = f["geometry"]["coordinates"]
+    return {"lat": lat, "lon": lon}
+
+
 def geocode(cache, towns, town, loc, province):
     """Find the town first, then search the location only inside the town's bounding box."""
     key = f"{province}|{town}|{loc}"
@@ -125,13 +167,15 @@ def geocode(cache, towns, town, loc, province):
     hit = None
     if t:
         south, north, west, east = t["boundingbox"]
-        for q in queries(loc):
-            r = nominatim({"q": q, "viewbox": f"{west},{south},{east},{north}", "bounded": 1})
+        box = f"{west},{south},{east},{north}"
+        hit = {"lat": float(t["lat"]), "lon": float(t["lon"]), "approx": True}
+        finders = (lambda q: nominatim({"q": q, "viewbox": box, "bounded": 1}),
+                   lambda q: photon(q, box, name))
+        for find in finders:
+            r = next(filter(None, map(find, queries(loc, name))), None)
             if r:
                 hit = {"lat": float(r["lat"]), "lon": float(r["lon"]), "approx": False}
                 break
-        else:
-            hit = {"lat": float(t["lat"]), "lon": float(t["lon"]), "approx": True}
     cache[key] = hit
     return hit
 
