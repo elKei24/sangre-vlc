@@ -3,5 +3,11 @@
   "extends": ["config:recommended"],
   "cdnurl": {
     "managerFilePatterns": ["/\\.html?$/"]
-  }
+  },
+  "packageRules": [
+    {
+      "matchUpdateTypes": ["minor", "patch", "pin", "digest"],
+      "automerge": true
+    }
+  ]
 }
