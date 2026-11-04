@@ -139,8 +139,9 @@ def matches(want, have):
 def photon(q, box, town):
     """Fuzzy search; the hit must lie in the town and repeat most words of the query."""
     url = "https://photon.komoot.io/api/?" + urllib.parse.urlencode({"q": q, "bbox": box, "limit": 5})
+    start = time.monotonic()
     features = json.loads(get(url))["features"]
-    time.sleep(1)
+    time.sleep(max(0, 1 - (time.monotonic() - start)))
     scored = []
     for f in features:
         p = f["properties"]
@@ -169,10 +170,12 @@ def geocode(cache, towns, town, loc, province):
         south, north, west, east = t["boundingbox"]
         box = f"{west},{south},{east},{north}"
         hit = {"lat": float(t["lat"]), "lon": float(t["lon"]), "approx": True}
-        finders = (lambda q: nominatim({"q": q, "viewbox": box, "bounded": 1}),
-                   lambda q: photon(q, box, name))
-        for find in finders:
-            r = next(filter(None, map(find, queries(loc, name))), None)
+        qs = list(queries(loc, name))
+        # Photon is fuzzy and slow: the street without its number adds nothing there.
+        finders = ((lambda q: nominatim({"q": q, "viewbox": box, "bounded": 1}), qs),
+                   (lambda q: photon(q, box, name), qs[:2]))
+        for find, texts in finders:
+            r = next(filter(None, map(find, texts)), None)
             if r:
                 hit = {"lat": float(r["lat"]), "lon": float(r["lon"]), "approx": False}
                 break
