@@ -34,6 +34,10 @@ button:hover { background: #f6f8fa; }
 small { margin-left: auto; color: var(--muted); font-size: 12px; }
 small a { color: inherit; }
 #map { flex: 1; }
+footer { padding: 8px 16px; font-size: 13px; color: var(--muted); border-top: 1px solid #eaeef2; }
+footer ul { display: inline; margin: 0; padding: 0; }
+footer li { display: inline; }
+footer li + li::before { content: " · "; }
 
 .leaflet-popup-content-wrapper { border-radius: 12px; box-shadow: 0 8px 24px rgba(0,0,0,.18); }
 .leaflet-popup-content { margin: 14px 16px; font: 14px/1.45 inherit; }

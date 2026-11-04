@@ -57,22 +57,59 @@ def parse(page, today):
 
 def town_name(town):
     # "POBLA DE VALLBONA, LA" -> "LA POBLA DE VALLBONA"; "ALMASSORA/ALMAZORA" -> "ALMASSORA"
-    m = re.match(r"^(.*), (L'|LA|EL|ELS|LES|LOS|LAS)$", town)
+    m = re.match(r"^(.*?),? \(?(L'|LA|EL|ELS|LES|LOS|LAS)\)?$", town)
     if m:
         town = m.group(2) + ("" if m.group(2) == "L'" else " ") + m.group(1)
     return town.split("/")[0]
 
 
+STREET_RE = re.compile(
+    r"\b(C/|CALLE|CARRER|AVDA?\.?|AVINGUDA|AVENIDA|AV\.|PLAZA|PLAÇA|PL\.|CTRA\.?|CARRETERA|"
+    r"CAMI|CAMINO|PASEO|PASSEIG|POL\.?|POLIGONO|POLÍGONO|PARTIDA|RONDA|GRAN VIA|PARC\b|PARQUE)", re.I)
+ABBREV = {"C.S.": "CENTRO DE SALUD", "C.S": "CENTRO DE SALUD", "HOSP.": "HOSPITAL",
+          "I.E.S.": "IES", "C.E.I.P.": "CEIP", "AJUNT.": "AJUNTAMENT", "AYTO.": "AYUNTAMIENTO"}
+
+
+def venue(loc):
+    """'ALCOI-CIP FP BATOI SALÓN DE ACTOS, C/ ...' -> 'CIP FP BATOI SALÓN DE ACTOS'"""
+    head = loc.split(",")[0]
+    head = re.sub(r"^[^-]*-\s*", "", head)  # town prefix
+    head = head.split("-")[0].strip()
+    for k, v in ABBREV.items():
+        head = head.replace(k, v)
+    return head
+
+
+def street(loc):
+    """Comma parts from the first one that names a street, e.g. 'C/ COLON, 44 - 46'"""
+    parts = [p.strip() for p in loc.split(",")]
+    for i, part in enumerate(parts[1:], 1):
+        if STREET_RE.search(part):
+            s = ", ".join(p for p in parts[i:] if p)
+            return re.sub(r"\b(S/N|Nº|N\.|NUM\.?)\b", "", s, flags=re.I).strip(" ,")
+    return ""
+
+
 def queries(town, loc, province):
-    """Nominatim queries from most to least specific."""
+    """(query, approx) pairs from most to least specific."""
     town = town_name(town)
     loc = re.sub(r"\(.*?\)", "", loc)
-    street = ", ".join(p.strip() for p in loc.split(",")[1:]) if "," in loc else ""
-    street = re.sub(r"\b(S/N|Nº|N\.|NUM\.?)\b", "", street, flags=re.I).strip(" ,")
-    if street:
-        yield f"{street}, {town}, {province}"
-        yield f"{re.sub(r'[\d,].*$', '', street).strip()}, {town}, {province}"
-    yield f"{town}, {province}"
+    st, ven = street(loc), venue(loc)
+    if st:
+        yield f"{st}, {town}, {province}", False
+    if ven:
+        yield f"{ven}, {town}, {province}", False
+    if st and re.search(r"\d", st):
+        yield f"{re.sub(r'[\d,].*$', '', st).strip()}, {town}, {province}", False
+    yield f"{town}, {province}", True
+
+
+def nominatim(q):
+    url = "https://nominatim.openstreetmap.org/search?" + urllib.parse.urlencode(
+        {"format": "json", "limit": 1, "countrycodes": "es", "q": q})
+    res = json.loads(get(url))
+    time.sleep(1.1)  # Nominatim usage policy: max 1 request/second
+    return res
 
 
 def geocode(cache, town, loc, province):
@@ -80,14 +117,10 @@ def geocode(cache, town, loc, province):
     if key in cache:
         return cache[key]
     hit = None
-    for q in queries(town, loc, province):
-        url = "https://nominatim.openstreetmap.org/search?" + urllib.parse.urlencode(
-            {"format": "json", "limit": 1, "countrycodes": "es", "q": q})
-        res = json.loads(get(url))
-        time.sleep(1.1)  # Nominatim usage policy: max 1 request/second
+    for q, approx in queries(town, loc, province):
+        res = nominatim(q)
         if res:
-            hit = {"lat": float(res[0]["lat"]), "lon": float(res[0]["lon"]),
-                   "approx": q.count(",") == 1}
+            hit = {"lat": float(res[0]["lat"]), "lon": float(res[0]["lon"]), "approx": approx}
             break
     cache[key] = hit
     return hit
@@ -119,10 +152,9 @@ def main():
         if i % 25 == 0:
             print(f"{i}/{len(places)}", file=sys.stderr)
         g = geocode(cache, p["town"], p["location"], p["province"])
-        if g:
-            out.append({**p, **g})
-        else:
+        if not g:
             print(f"not geocoded: {key}", file=sys.stderr)
+        out.append({**p, **(g or {})})
         json.dump(cache, open(GEOCACHE, "w", encoding="utf-8"),
                   ensure_ascii=False, indent=0, sort_keys=True)
     json.dump({"updated": dt.datetime.now(dt.timezone.utc).isoformat(timespec="minutes"),
