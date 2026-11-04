@@ -110,7 +110,11 @@ def main():
         if n == 0:
             sys.exit(f"no rows parsed for {province}; page layout changed?")
     out = []
-    for key, p in places.items():
+    new = sum(k not in cache for k in places)
+    print(f"{len(places)} places, {new} to geocode", file=sys.stderr)
+    for i, (key, p) in enumerate(places.items(), 1):
+        if i % 25 == 0:
+            print(f"{i}/{len(places)}", file=sys.stderr)
         g = geocode(cache, p["town"], p["location"], p["province"])
         if g:
             out.append({**p, **g})

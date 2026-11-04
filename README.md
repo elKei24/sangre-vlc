@@ -6,7 +6,7 @@ The data comes from the [Centro de Transfusión](https://centro-transfusion.san.
 
 ## Files
 
-- `index.html`: the map (Leaflet, no build step).
+- `index.html`, `app.js`, `style.css`: the map (Leaflet, no build step).
 - `scrape.py`: fetches the three province pages, parses the schedule and writes `data.json`. Python standard library only.
 - `geocache.json`: cache of geocoded locations. Delete an entry to geocode it again.
 - `.github/workflows/update.yml`: daily update job.
