@@ -53,7 +53,6 @@ from.value = plusDays(0);
 
 fetch('data.json').then(r => r.json()).then(d => {
   places = d.places;
-  document.getElementById('meta').innerHTML =
-    `Actualizado ${d.updated.slice(0, 16).replace('T', ' ')} UTC · <a href="https://centro-transfusion.san.gva.es/es/puntos-de-donacion" target="_blank" rel="noopener">fuente oficial</a>`;
+  document.getElementById('updated').textContent = d.updated.slice(0, 16).replace('T', ' ');
   render();
 });
