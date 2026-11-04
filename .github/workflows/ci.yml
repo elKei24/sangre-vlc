@@ -11,5 +11,5 @@ jobs:
     steps:
       - uses: actions/checkout@v7
       - run: python3 scripts/test_scrape.py
-      - run: node --check docs/app.js
-      - run: for f in *.json docs/*.json scripts/*.json .github/*.json; do python3 -m json.tool "$f" > /dev/null; done
+      - run: node --check site/app.js
+      - run: for f in *.json site/*.json scripts/*.json .github/*.json; do python3 -m json.tool "$f" > /dev/null; done

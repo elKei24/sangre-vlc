@@ -17,7 +17,7 @@ MONTHS = ["enero", "febrero", "marzo", "abril", "mayo", "junio", "julio",
 UA = "sangre-vlc (https://github.com/elKei24/sangre-vlc)"
 ROOT = pathlib.Path(__file__).resolve().parents[1]
 GEOCACHE = ROOT / "scripts" / "geocache.json"
-DATA = ROOT / "docs" / "data.json"
+DATA = ROOT / "site" / "data.json"
 
 DATE_RE = re.compile(r'<p class="subtitulo2">[^<]*?(\d+) de (\w+)</p>')
 ROW_RE = re.compile(
