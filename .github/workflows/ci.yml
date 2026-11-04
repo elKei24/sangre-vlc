@@ -2,6 +2,7 @@ name: CI
 
 on:
   pull_request:
+    types: [opened, edited, synchronize, reopened]
   push:
     branches: [main]
 
@@ -9,6 +10,12 @@ jobs:
   ci:
     runs-on: ubuntu-latest
     steps:
+      - if: github.event_name == 'pull_request'
+        env:
+          TITLE: ${{ github.event.pull_request.title }}
+        run: |
+          echo "$TITLE" | grep -Eq '^(build|chore|ci|docs|feat|fix|perf|refactor|revert|style|test)(\([^)]+\))?!?: .+' \
+            || { echo "PR title must follow Conventional Commits, e.g. 'feat: add filter'"; exit 1; }
       - uses: actions/checkout@v7
       - run: python3 scripts/test_scrape.py
       - run: node --check site/app.js

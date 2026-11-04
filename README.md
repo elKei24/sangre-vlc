@@ -13,7 +13,7 @@ The data comes from the [Centro de Transfusión](https://centro-transfusion.san.
 - `scripts/geocache.json`: cache of geocoded locations. Delete an entry to geocode it again.
 - `.github/workflows/update.yml`: daily data update.
 - `.github/workflows/pages.yml`: deploys `site/` to GitHub Pages.
-- `.github/workflows/ci.yml`: checks that run on each pull request.
+- `.github/workflows/ci.yml`: checks that run on each pull request. The PR title must follow [Conventional Commits](https://www.conventionalcommits.org/), for example `feat: add filter`.
 - `.github/workflows/renovate.yml`: weekly dependency updates.
 
 ## Run locally
