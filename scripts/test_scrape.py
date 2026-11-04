@@ -13,13 +13,12 @@ PAGE = """<p class="subtitulo2">Viernes, 2 de enero</p><table>
 
 rows = list(scrape.parse(PAGE, dt.date(2026, 11, 4)))
 assert rows == [(dt.date(2027, 1, 2), "POBLA DE VALLBONA, LA", "LA POBLA-CENTRO SOCIAL, C/SENYERA 31", "17:00-20:30")], rows
-assert list(scrape.queries("POBLA DE VALLBONA, LA", "LA POBLA-CENTRO SOCIAL, C/SENYERA 31", "Valencia")) == [
-    ("C/SENYERA 31, LA POBLA DE VALLBONA, Valencia", False),
-    ("CENTRO SOCIAL, LA POBLA DE VALLBONA, Valencia", False),
-    ("C/SENYERA, LA POBLA DE VALLBONA, Valencia", False),
-    ("LA POBLA DE VALLBONA, Valencia", True)]
+assert list(scrape.queries("LA POBLA-CENTRO SOCIAL, C/SENYERA 31")) == ["C/SENYERA 31", "CENTRO SOCIAL", "C/SENYERA"]
+assert list(scrape.queries("VALENCIA - AUTORIDAD PORTUARIA (SOLO EMPLEADOS) ANTESALA SALÓN DE ACTOS (PLANTA BAJA), AVDA MUELLE DEL TURIA S/N - FASE III")) == [
+    "AVDA MUELLE DEL TURIA", "AUTORIDAD PORTUARIA"]
 assert scrape.street("AGOST-CENTRO SOCIAL, GIMNASIO, AVDA. CONSELL PAIS VALENCIÀ, 16-18") == "AVDA. CONSELL PAIS VALENCIÀ, 16-18"
-assert scrape.venue("ALICANTE-C.S. CABO HUERTAS, BIBLIOTECA, C/ ARPON 11") == "CENTRO DE SALUD CABO HUERTAS"
+assert scrape.venue("ALICANTE-C.S.LOS ÁNGELES, GIMNASIO MATRONA, C/ LINARES, 9") == "CENTRO DE SALUD LOS ÁNGELES"
+assert scrape.venue("ALCOI-CIP FP BATOI SALÓN DE ACTOS, C/ SOCIEDAD UNIÓN MUSICAL, 8") == "CIP FP BATOI"
 assert scrape.venue("ALTEA - CIM, SALA 2, C/ MARINA BAIXA, 6") == "CIM"
 assert scrape.street("BIAR-CASA DE CULTURA, PLANTA BAJA, PLAZA DEL CONVENTO") == "PLAZA DEL CONVENTO"
 assert scrape.town_name("ALMASSORA/ALMAZORA") == "ALMASSORA"
