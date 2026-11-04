@@ -11,17 +11,26 @@ let places = [];
 const isoDate = d => d.toISOString().slice(0, 10);
 const plusDays = n => isoDate(new Date(Date.now() + n * 86400000));
 
+function slotList(slots) {
+  const byDay = {};
+  for (const [d, h] of slots) (byDay[d] ??= []).push(h);
+  return Object.keys(byDay).sort().map(d =>
+    `<li><b>${fmt.format(new Date(d))}</b><span>${byDay[d].join(', ')}</span></li>`).join('');
+}
+
 function render() {
   layer.clearLayers();
+  const missing = [];
   let n = 0;
   for (const p of places) {
     const slots = p.slots.filter(([d]) => (!from.value || d >= from.value) && (!to.value || d <= to.value));
     if (!slots.length) continue;
     n++;
-    const byDay = {};
-    for (const [d, h] of slots) (byDay[d] ??= []).push(h);
-    const items = Object.keys(byDay).sort().map(d =>
-      `<li><b>${fmt.format(new Date(d))}</b><span>${byDay[d].join(', ')}</span></li>`).join('');
+    if (p.lat == null) {
+      missing.push(`<li><b>${p.location}</b> (${p.town}): ${slots.map(([d, h]) => `${fmt.format(new Date(d))} ${h}`).join(', ')}</li>`);
+      continue;
+    }
+    const items = slotList(slots);
     L.circleMarker([p.lat, p.lon], {
       radius: 8, color: '#fff', weight: 2, fillColor: '#c8102e', fillOpacity: p.approx ? .45 : .95
     }).addTo(layer).bindPopup(
@@ -30,6 +39,9 @@ function render() {
       { maxWidth: 320 });
   }
   document.getElementById('count').textContent = `${n} punto${n === 1 ? '' : 's'}`;
+  const footer = document.getElementById('missing');
+  footer.hidden = !missing.length;
+  footer.innerHTML = `Sin ubicación en el mapa: <ul>${missing.join('')}</ul>`;
 }
 
 function setRange(a, b) { from.value = a; to.value = b; render(); }

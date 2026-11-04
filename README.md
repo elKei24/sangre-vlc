@@ -10,7 +10,7 @@ The data comes from the [Centro de Transfusión](https://centro-transfusion.san.
 
 - `site/`: the web site (Leaflet map, no build step) and the generated `data.json`.
 - `scripts/scrape.py`: fetches the three province pages, parses the schedule and writes `site/data.json`. Python standard library only.
-- `scripts/geocache.json`: cache of geocoded locations. Delete an entry to geocode it again.
+- `scripts/geocache.json`: cache of geocoded locations. Delete an entry to geocode it again. Places that could not be geocoded are listed below the map.
 - `.github/workflows/update.yml`: daily data update.
 - `.github/workflows/pages.yml`: deploys `site/` to GitHub Pages.
 - `.github/workflows/ci.yml`: checks that run on each pull request. The PR title must follow [Conventional Commits](https://www.conventionalcommits.org/), for example `feat: add filter`.
