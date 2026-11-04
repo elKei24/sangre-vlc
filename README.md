@@ -25,4 +25,4 @@ Enable GitHub Pages for the repository with the source "Deploy from a branch", b
 
 ## Dependency updates
 
-`.github/workflows/renovate.yml` runs a self-hosted Renovate each Monday. It needs the repository secret `RENOVATE_TOKEN`: a personal access token with `repo` and `workflow` scope, so that Renovate can also update the files in `.github/workflows`.
+`.github/workflows/renovate.yml` runs a self-hosted Renovate each Monday. It needs the repository secret `RENOVATE_TOKEN`: a personal access token with `repo` and `workflow` scope, so that Renovate can also update the files in `.github/workflows`. Minor and patch updates merge automatically after the CI workflow passes.
