@@ -3,6 +3,7 @@
 import datetime as dt
 import html
 import json
+import pathlib
 import re
 import sys
 import time
@@ -14,7 +15,9 @@ PROVINCES = {"valencia": "Valencia", "castellon": "Castellón", "alicante": "Ali
 MONTHS = ["enero", "febrero", "marzo", "abril", "mayo", "junio", "julio",
           "agosto", "septiembre", "octubre", "noviembre", "diciembre"]
 UA = "sangre-vlc (https://github.com/elKei24/sangre-vlc)"
-GEOCACHE = "geocache.json"
+ROOT = pathlib.Path(__file__).resolve().parents[1]
+GEOCACHE = ROOT / "scripts" / "geocache.json"
+DATA = ROOT / "site" / "data.json"
 
 DATE_RE = re.compile(r'<p class="subtitulo2">[^<]*?(\d+) de (\w+)</p>')
 ROW_RE = re.compile(
@@ -123,7 +126,7 @@ def main():
         json.dump(cache, open(GEOCACHE, "w", encoding="utf-8"),
                   ensure_ascii=False, indent=0, sort_keys=True)
     json.dump({"updated": dt.datetime.now(dt.timezone.utc).isoformat(timespec="minutes"),
-               "places": out}, open("data.json", "w", encoding="utf-8"), ensure_ascii=False)
+               "places": out}, open(DATA, "w", encoding="utf-8"), ensure_ascii=False)
 
 
 if __name__ == "__main__":
