@@ -5,19 +5,18 @@ on:
     - cron: "15 5 * * *"
   workflow_dispatch:
 
-permissions:
-  contents: write
-
 jobs:
   update:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v7
-      - run: python3 scrape.py
+        with:
+          ssh-key: ${{ secrets.DEPLOY_KEY }}
+      - run: python3 scripts/scrape.py
       - run: |
           git config user.name github-actions
           git config user.email github-actions@github.com
-          git add data.json geocache.json
+          git add docs/data.json scripts/geocache.json
           git diff --cached --quiet && exit 0
           git commit -m "chore: update donation data"
           git pull --rebase --autostash

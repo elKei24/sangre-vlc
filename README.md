@@ -4,26 +4,33 @@
 
 Map of the blood donation points in the Comunitat Valenciana (Valencia, Castellón, Alicante). Select a pin to see the dates and hours. Use the date filter to show only the points available in a given period.
 
-The data comes from the [Centro de Transfusión](https://centro-transfusion.san.gva.es/es/puntos-de-donacion) web page. That page does not send CORS headers, so a browser cannot read it directly. A GitHub Actions workflow runs `scrape.py` each day, geocodes new locations with Nominatim and commits `data.json`. GitHub Pages serves `index.html` and `data.json` as static files.
+The data comes from the [Centro de Transfusión](https://centro-transfusion.san.gva.es/es/puntos-de-donacion) web page. That page does not send CORS headers, so a browser cannot read it directly. A GitHub Actions workflow runs the scraper each day, geocodes new locations with Nominatim and commits `docs/data.json`. GitHub Pages serves the `docs` folder as static files.
 
-## Files
+## Layout
 
-- `index.html`, `app.js`, `style.css`: the map (Leaflet, no build step).
-- `scrape.py`: fetches the three province pages, parses the schedule and writes `data.json`. Python standard library only.
-- `geocache.json`: cache of geocoded locations. Delete an entry to geocode it again.
-- `.github/workflows/update.yml`: daily update job.
+- `docs/`: the web site (Leaflet map, no build step) and the generated `data.json`.
+- `scripts/scrape.py`: fetches the three province pages, parses the schedule and writes `docs/data.json`. Python standard library only.
+- `scripts/geocache.json`: cache of geocoded locations. Delete an entry to geocode it again.
+- `.github/workflows/update.yml`: daily data update.
+- `.github/workflows/ci.yml`: checks that run on each pull request.
+- `.github/workflows/renovate.yml`: weekly dependency updates.
 
 ## Run locally
 
 ```sh
-python3 test_scrape.py
-python3 scrape.py          # first run geocodes all locations, about 7 minutes
-python3 -m http.server     # open http://localhost:8000
+python3 scripts/test_scrape.py
+python3 scripts/scrape.py          # first run geocodes all locations, about 7 minutes
+python3 -m http.server -d docs     # open http://localhost:8000
 ```
 
 ## Deploy
 
-Enable GitHub Pages for the repository with the source "Deploy from a branch", branch `main`, folder `/`.
+GitHub Pages is set to "Deploy from a branch", branch `main`, folder `/docs`.
+
+## Secrets
+
+- `DEPLOY_KEY`: private SSH deploy key with write access. The daily data update pushes to `main` with it, because the branch ruleset lets only this key push without a pull request.
+- `RENOVATE_TOKEN`: see below.
 
 ## Dependency updates
 
