@@ -1,14 +1,30 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": ["config:recommended"],
+  "extends": [
+    "config:recommended"
+  ],
   "semanticCommits": "enabled",
   "cdnurl": {
-    "managerFilePatterns": ["/\\.html?$/"]
+    "managerFilePatterns": [
+      "/\\.html?$/"
+    ]
   },
   "packageRules": [
     {
-      "matchUpdateTypes": ["minor", "patch", "pin", "digest"],
+      "matchUpdateTypes": [
+        "minor",
+        "patch",
+        "pin",
+        "digest"
+      ],
       "automerge": true
+    },
+    {
+      "description": "MapLibre GL JS 6 ships only ES modules, cdnjs has no classic script for it.",
+      "matchDepNames": [
+        "maplibre-gl"
+      ],
+      "allowedVersions": "<6"
     }
   ]
 }

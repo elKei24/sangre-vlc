@@ -1,8 +1,40 @@
-const map = L.map('map').setView([39.3, -0.5], 8);
-L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-  maxZoom: 19, attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-}).addTo(map);
-const layer = L.layerGroup().addTo(map);
+const map = new maplibregl.Map({
+  container: 'map',
+  style: 'https://tiles.openfreemap.org/styles/liberty',
+  bounds: [[-1.6, 37.8], [0.6, 40.85]],
+  fitBoundsOptions: { padding: 16 },
+  maxZoom: 18
+});
+map.addControl(new maplibregl.NavigationControl({ showCompass: false }));
+const geojson = { type: 'FeatureCollection', features: [] };
+
+// Pans the map so that an element, for example a popup, is fully visible.
+function panIntoView(el, pad = 12) {
+  const r = el.getBoundingClientRect(), m = map.getContainer().getBoundingClientRect();
+  const dx = r.left < m.left + pad ? r.left - m.left - pad : Math.max(0, r.right - m.right + pad);
+  const dy = r.top < m.top + pad ? r.top - m.top - pad : Math.max(0, r.bottom - m.bottom + pad);
+  if (dx || dy) map.panBy([dx, dy]);
+}
+map.on('load', () => {
+  map.addSource('places', { type: 'geojson', data: geojson });
+  map.addLayer({
+    id: 'places', type: 'circle', source: 'places',
+    paint: {
+      'circle-radius': 8, 'circle-color': '#c8102e',
+      'circle-opacity': ['case', ['get', 'approx'], .45, .95],
+      'circle-stroke-color': '#fff', 'circle-stroke-width': 2
+    }
+  });
+  map.on('click', 'places', e => {
+    const f = e.features[0];
+    const popup = new maplibregl.Popup({ maxWidth: 'min(320px, 100vw - 48px)', offset: 10 })
+      .setLngLat(f.geometry.coordinates).setHTML(f.properties.html).addTo(map);
+    // The popup is positioned a frame after it is added.
+    requestAnimationFrame(() => requestAnimationFrame(() => panIntoView(popup.getElement())));
+  });
+  map.on('mouseenter', 'places', () => { map.getCanvas().style.cursor = 'pointer'; });
+  map.on('mouseleave', 'places', () => { map.getCanvas().style.cursor = ''; });
+});
 const from = document.getElementById('from');
 const to = document.getElementById('to');
 const fmt = new Intl.DateTimeFormat('es-ES', { weekday: 'short', day: 'numeric', month: 'short' });
@@ -21,7 +53,7 @@ function slotList(slots) {
 }
 
 function render() {
-  layer.clearLayers();
+  geojson.features = [];
   const missing = [];
   let n = 0;
   for (const p of places) {
@@ -32,14 +64,14 @@ function render() {
       missing.push(`<li><b>${p.location}</b><span>${p.town} · ${slots.map(([d, h]) => `${fmt.format(new Date(d))} ${h}`).join(', ')}</span></li>`);
       continue;
     }
-    const items = slotList(slots);
-    L.circleMarker([p.lat, p.lon], {
-      radius: 8, color: '#fff', weight: 2, fillColor: '#c8102e', fillOpacity: p.approx ? .45 : .95
-    }).addTo(layer).bindPopup(
-      `<div class="popup"><h3>${p.location}</h3><div class="town">${p.town} · ${p.province}</div>
-       <ul>${items}</ul>${p.approx ? '<div class="approx">⚠ Dirección exacta no encontrada, marcador en el centro del municipio</div>' : ''}</div>`,
-      { maxWidth: 320 });
+    const html = `<div class="popup"><h3>${p.location}</h3><div class="town">${p.town} · ${p.province}</div>
+       <ul>${slotList(slots)}</ul>${p.approx ? '<div class="approx">⚠ Dirección exacta no encontrada, marcador en el centro del municipio</div>' : ''}</div>`;
+    geojson.features.push({
+      type: 'Feature', geometry: { type: 'Point', coordinates: [p.lon, p.lat] },
+      properties: { html, approx: !!p.approx }
+    });
   }
+  map.getSource('places')?.setData(geojson);
   document.getElementById('count').textContent = `${n} punto${n === 1 ? '' : 's'}`;
   missingLink.hidden = !missing.length;
   missingLink.textContent = `${missing.length} sin ubicación`;
