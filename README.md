@@ -8,7 +8,7 @@ The data comes from the [Centro de Transfusión](https://centro-transfusion.san.
 
 ## Layout
 
-- `site/`: the web site (Leaflet map, no build step) and the generated `data.json`.
+- `site/`: the web site (MapLibre GL JS with vector tiles from [OpenFreeMap](https://openfreemap.org), no build step) and the generated `data.json`.
 - `scripts/scrape.py`: fetches the three province pages, parses the schedule and writes `site/data.json`. Python standard library only.
 - `scripts/geocache.json`: cache of geocoded locations. Delete an entry to geocode it again. Places that could not be geocoded are listed in a dialog that opens from the "sin ubicación" link in the header.
 - `.github/workflows/update.yml`: daily data update.
