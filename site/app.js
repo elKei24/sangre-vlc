@@ -26,9 +26,10 @@ map.on('load', () => {
     }
   });
   map.on('click', 'places', e => {
-    const f = e.features[0];
+    // Every marker under the pointer goes into one popup, so stacked markers stay reachable.
+    const html = [...new Set(e.features.map(f => f.properties.html))].join('');
     const popup = new maplibregl.Popup({ maxWidth: 'min(320px, 100vw - 48px)', offset: 10 })
-      .setLngLat(f.geometry.coordinates).setHTML(f.properties.html).addTo(map);
+      .setLngLat(e.features[0].geometry.coordinates).setHTML(`<div class="popup">${html}</div>`).addTo(map);
     // The popup is positioned a frame after it is added.
     requestAnimationFrame(() => requestAnimationFrame(() => panIntoView(popup.getElement())));
   });
@@ -53,8 +54,9 @@ function slotList(slots) {
 }
 
 function render() {
-  geojson.features = [];
   const missing = [];
+  // Places with the same coordinates become one marker with a combined popup.
+  const stacks = new Map();
   let n = 0;
   for (const p of places) {
     const slots = p.slots.filter(([d]) => (!from.value || d >= from.value) && (!to.value || d <= to.value));
@@ -64,13 +66,17 @@ function render() {
       missing.push(`<li><b>${p.location}</b><span>${p.town} · ${slots.map(([d, h]) => `${fmt.format(new Date(d))} ${h}`).join(', ')}</span></li>`);
       continue;
     }
-    const html = `<div class="popup"><h3>${p.location}</h3><div class="town">${p.town} · ${p.province}</div>
+    const html = `<div class="place"><h3>${p.location}</h3><div class="town">${p.town} · ${p.province}</div>
        <ul>${slotList(slots)}</ul>${p.approx ? '<div class="approx">⚠ Dirección exacta no encontrada, marcador en el centro del municipio</div>' : ''}</div>`;
-    geojson.features.push({
-      type: 'Feature', geometry: { type: 'Point', coordinates: [p.lon, p.lat] },
-      properties: { html, approx: !!p.approx }
-    });
+    const key = `${p.lat.toFixed(5)},${p.lon.toFixed(5)}`;
+    const s = stacks.get(key) ?? stacks.set(key, { lon: p.lon, lat: p.lat, html: '', approx: true }).get(key);
+    s.html += html;
+    s.approx &&= !!p.approx;
   }
+  geojson.features = [...stacks.values()].map(s => ({
+    type: 'Feature', geometry: { type: 'Point', coordinates: [s.lon, s.lat] },
+    properties: { html: s.html, approx: s.approx }
+  }));
   map.getSource('places')?.setData(geojson);
   document.getElementById('count').textContent = `${n} punto${n === 1 ? '' : 's'}`;
   missingLink.hidden = !missing.length;
