@@ -12,21 +12,42 @@
 <header>
   <h1><span class="drop">🩸</span> Dona sangre</h1>
   <div class="filters">
-    <label>Desde <input type="date" id="from"></label>
-    <label>Hasta <input type="date" id="to"></label>
-    <button type="button" id="today">Hoy</button>
-    <button type="button" id="week">7 días</button>
-    <button type="button" id="all">Todo</button>
+    <div class="range">
+      <label><span>Desde</span> <input type="date" id="from"></label>
+      <label><span>Hasta</span> <input type="date" id="to"></label>
+    </div>
+    <div class="quick">
+      <button type="button" id="today">Hoy</button>
+      <button type="button" id="week">7 días</button>
+      <button type="button" id="all">Todo</button>
+    </div>
   </div>
-  <span id="count" class="count"></span>
-  <small>
-    Actualizado <span id="updated">…</span> UTC ·
-    <a href="https://centro-transfusion.san.gva.es/es/puntos-de-donacion" target="_blank" rel="noopener">fuente oficial</a> ·
-    <a href="https://github.com/elKei24/sangre-vlc" target="_blank" rel="noopener">GitHub</a>
-  </small>
+  <p class="status">
+    <span id="count" class="count"></span>
+    <a href="#" id="missing-link" hidden></a>
+  </p>
+  <button type="button" id="info" class="icon" aria-label="Información">i</button>
 </header>
 <div id="map"></div>
-<footer id="missing" hidden></footer>
+
+<dialog id="info-dialog" aria-labelledby="info-title">
+  <div class="dialog-body">
+    <button type="button" class="close" aria-label="Cerrar">×</button>
+    <h2 id="info-title">🩸 Dona sangre</h2>
+    <p>Puntos de donación de sangre en la Comunitat Valenciana. Pulsa un marcador para ver las fechas y horas; los marcadores claros están en el centro del municipio porque no se encontró la dirección exacta.</p>
+    <p>Datos del <a href="https://centro-transfusion.san.gva.es/es/puntos-de-donacion" target="_blank" rel="noopener">Centro de Transfusión</a>, actualizados el <span id="updated">…</span> UTC.</p>
+    <p>Código fuente en <a href="https://github.com/elKei24/sangre-vlc" target="_blank" rel="noopener">GitHub</a>.</p>
+  </div>
+</dialog>
+
+<dialog id="missing-dialog" aria-labelledby="missing-title">
+  <div class="dialog-body">
+    <button type="button" class="close" aria-label="Cerrar">×</button>
+    <h2 id="missing-title">Sin ubicación en el mapa</h2>
+    <ul id="missing" class="missing"></ul>
+  </div>
+</dialog>
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
 <script src="app.js"></script>
 </body>

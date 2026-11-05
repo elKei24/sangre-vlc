@@ -2,6 +2,7 @@
   --red: #c8102e;
   --ink: #1f2328;
   --muted: #656d76;
+  --line: #d0d7de;
   --bg: #fff;
 }
 html, body { height: 100%; margin: 0; }
@@ -16,28 +17,51 @@ header {
   box-shadow: 0 1px 0 rgba(0,0,0,.08), 0 4px 16px rgba(0,0,0,.06);
   z-index: 1000;
 }
-h1 { font-size: 18px; font-weight: 700; margin: 0; letter-spacing: -.01em; }
+h1 { font-size: 18px; font-weight: 700; margin: 0; letter-spacing: -.01em; white-space: nowrap; }
 .drop { margin-right: 2px; }
-.filters { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
-label { display: flex; align-items: center; gap: 6px; color: var(--muted); font-size: 13px; }
+.filters, .range, .quick { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+.range label { display: flex; align-items: center; gap: 6px; color: var(--muted); font-size: 13px; }
 input[type=date] {
-  font: inherit; color: var(--ink); padding: 5px 8px;
-  border: 1px solid #d0d7de; border-radius: 8px; background: #f6f8fa;
+  font: inherit; color: var(--ink); padding: 5px 8px; min-width: 0;
+  border: 1px solid var(--line); border-radius: 8px; background: #f6f8fa;
 }
 input[type=date]:focus { outline: 2px solid var(--red); outline-offset: 1px; border-color: transparent; }
 button {
   font: inherit; font-size: 13px; cursor: pointer; padding: 5px 12px;
-  border: 1px solid #d0d7de; border-radius: 999px; background: #fff; color: var(--ink);
+  border: 1px solid var(--line); border-radius: 999px; background: #fff; color: var(--ink);
 }
 button:hover { background: #f6f8fa; }
+.status { margin: 0; font-size: 13px; color: var(--muted); white-space: nowrap; }
 .count { font-weight: 600; color: var(--red); }
-small { margin-left: auto; color: var(--muted); font-size: 12px; }
-small a { color: inherit; }
+.status a { color: inherit; }
+.status a::before { content: " · "; display: inline-block; white-space: pre; }
+.icon {
+  margin-left: auto; width: 28px; height: 28px; padding: 0; border-radius: 50%;
+  font: italic 700 15px/1 Georgia, "Times New Roman", serif; color: var(--muted);
+}
 #map { flex: 1; }
-footer { padding: 8px 16px; font-size: 13px; color: var(--muted); border-top: 1px solid #eaeef2; }
-footer ul { display: inline; margin: 0; padding: 0; }
-footer li { display: inline; }
-footer li + li::before { content: " · "; }
+
+dialog {
+  border: 0; border-radius: 14px; padding: 0; color: var(--ink);
+  width: min(440px, 100% - 32px); max-height: min(80vh, 100% - 32px);
+  box-shadow: 0 16px 48px rgba(0,0,0,.25);
+}
+dialog::backdrop { background: rgba(0,0,0,.35); }
+.dialog-body { position: relative; padding: 18px 20px; font-size: 14px; }
+dialog h2 { margin: 0 32px 10px 0; font-size: 16px; line-height: 1.3; }
+dialog p { margin: 0 0 10px; }
+dialog p:last-child { margin-bottom: 0; }
+dialog a { color: var(--red); }
+.close {
+  position: absolute; top: 10px; right: 10px; width: 32px; height: 32px; padding: 0;
+  border: 0; border-radius: 50%; font-size: 22px; line-height: 1; color: var(--muted);
+}
+.missing { margin: 0; padding: 0; list-style: none; }
+.missing li { padding: 8px 0; border-top: 1px solid #eaeef2; }
+.missing li:first-child { border-top: 0; padding-top: 0; }
+.missing li:last-child { padding-bottom: 0; }
+.missing b { display: block; }
+.missing span { color: var(--muted); font-size: 13px; }
 
 .leaflet-popup-content-wrapper { border-radius: 12px; box-shadow: 0 8px 24px rgba(0,0,0,.18); }
 .leaflet-popup-content { margin: 14px 16px; font: 14px/1.45 inherit; }
@@ -49,6 +73,15 @@ footer li + li::before { content: " · "; }
 .popup .approx { margin-top: 8px; font-size: 12px; color: var(--red); }
 
 @media (max-width: 600px) {
-  header { gap: 8px 12px; padding: 8px 12px; }
-  small { margin-left: 0; width: 100%; }
+  header { gap: 6px 10px; padding: 8px 12px; }
+  h1 { font-size: 17px; }
+  .status { order: 1; }
+  .icon { order: 2; }
+  .filters { order: 3; width: 100%; gap: 6px; }
+  .range, .quick { width: 100%; flex-wrap: nowrap; }
+  .range label { flex: 1; min-width: 0; }
+  .range label span { display: none; }
+  .range label + label::before { content: "–"; color: var(--muted); }
+  input[type=date] { width: 100%; }
+  .quick button { flex: 1; padding-left: 0; padding-right: 0; }
 }
