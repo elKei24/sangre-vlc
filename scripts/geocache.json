@@ -249,6 +249,11 @@
 "lat": 38.1258444,
 "lon": -0.8783706
 },
+"Alicante|CALP / CALPE|CALP-ASAMBLEA LOCAL CRUZ ROJA, , C/ MARIA JORRO,1 LOCAL Nº.10": {
+"approx": false,
+"lat": 38.6428374,
+"lon": 0.0422152
+},
 "Alicante|CALP / CALPE|CALP-ASOCIACION ROGER DE LAURIA, ASAMBLEA LOCAL CRUZ ROJA, C/ MARIA JORRO,1 LOCAL Nº.10": {
 "approx": false,
 "lat": 38.6428374,
@@ -293,6 +298,11 @@
 "approx": false,
 "lat": 38.8377433,
 "lon": 0.1117175
+},
+"Alicante|DENIA|DENIA-IES HISTORIADOR CHABAS, SALON DE USOS MULTIPLES, C/ CETO, 1": {
+"approx": false,
+"lat": 38.8304379,
+"lon": 0.0995141
 },
 "Alicante|DOLORES|DOLORES-CENTRO SOCIAL ENTRADA, C/ SAN ANTONIO, S/N": {
 "approx": false,
@@ -664,6 +674,11 @@
 "lat": 38.5403625,
 "lon": -0.5069539
 },
+"Castellón|ALMASSORA/ALMAZORA|ALMASSORA-EFI Electronics For Imaging DONACIÓN EXCLUSIVA PARA PERSONAL, POL. IND. SUPOI-8, CARRER DEL IBERS, 54": {
+"approx": true,
+"lat": 39.9435743,
+"lon": -0.0634783
+},
 "Castellón|ALMASSORA/ALMAZORA|ALMASSORA-NEOLITH (Solo Empleados), POLÍGONO INDUSTRIAL CAMÍ FONDO, SUPOI 8, C/IBERS 31": {
 "approx": false,
 "lat": 39.9711324,
@@ -843,6 +858,11 @@
 "approx": false,
 "lat": 39.9625654,
 "lon": -0.2114944
+},
+"Castellón|OROPESA DEL MAR/ORPESA|OROPESA-CENTRO DE SALUD CENTRO DE SALUD-CONSULTAS N. 9 Y 10 (PEDIATRIA), C/ TORREBLANCA, 14": {
+"approx": false,
+"lat": 40.0956961,
+"lon": 0.1370967
 },
 "Castellón|PEÑISCOLA|PEÑISCOLA-CENTRO DE SALUD PLANTA 1-(GIMNASIO), C/ RIO 11": {
 "approx": false,
@@ -1305,6 +1325,11 @@
 "lat": 39.4247069,
 "lon": -0.416239
 },
+"Valencia|PATERNA|PATERNA - \"TEATRO CAPRI\" SALA (Planta 1a.), C/ ERNESTO FERRANDO, Nº 9": {
+"approx": false,
+"lat": 39.4985065,
+"lon": -0.4392692
+},
 "Valencia|PATERNA|PATERNA - CENTRE DE SALUT \"CLOT DE JOAN\" HALL DE PEDIATRIA (planta baixa), PLAÇA CLOT DE JOAN, S/N": {
 "approx": false,
 "lat": 39.5043369,
@@ -1414,6 +1439,11 @@
 "approx": false,
 "lat": 39.4662995,
 "lon": -0.4254843
+},
+"Valencia|REAL|REAL-BARRACO SALA-PLANTA BAIXA, C/ JOSÉ MARIÁ REGOLF, S/N": {
+"approx": false,
+"lat": 39.3334015,
+"lon": -0.6074939
 },
 "Valencia|REQUENA|REQUENA-CENTRO DE SALUD SALA, AVD.CONSTITUCIÓN, 47": {
 "approx": false,
@@ -1745,6 +1775,11 @@
 "lat": 39.4976783,
 "lon": -0.432144
 },
+"Valencia|VALÈNCIA|VALENCIA-FACULTAD DE MEDICINA-HALL- SOLO ALUMNOS- HALL, AVDA. BLASCO IBAÑEZ, Nº 15": {
+"approx": false,
+"lat": 39.4976783,
+"lon": -0.432144
+},
 "Valencia|VALÈNCIA|VALENCIA-FCAFE/FISIOTERAPIA HALL, C/ GASCO OLIAG, 5": {
 "approx": false,
 "lat": 39.4782546,
@@ -1814,6 +1849,11 @@
 "approx": false,
 "lat": 39.4649377,
 "lon": -0.4299981
+},
+"Valencia|XIRIVELLA|XIRIVELLA-GRAN TURIA AUTOBANCO, PLAZA EUROPA, Nº1": {
+"approx": false,
+"lat": 39.4645154,
+"lon": -0.4147782
 },
 "Valencia|XIRIVELLA|XIRIVELLA-I.E.S. GONZALO ANAYA-SOLO ALUMNADO- AULA MULTIUSOS, POLIG VIRGEN LA SALUD,C/ LES PALMERES 1": {
 "approx": false,
