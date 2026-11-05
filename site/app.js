@@ -6,6 +6,8 @@ const layer = L.layerGroup().addTo(map);
 const from = document.getElementById('from');
 const to = document.getElementById('to');
 const fmt = new Intl.DateTimeFormat('es-ES', { weekday: 'short', day: 'numeric', month: 'short' });
+const missingLink = document.getElementById('missing-link');
+const missingDialog = document.getElementById('missing-dialog');
 let places = [];
 
 const isoDate = d => d.toISOString().slice(0, 10);
@@ -27,7 +29,7 @@ function render() {
     if (!slots.length) continue;
     n++;
     if (p.lat == null) {
-      missing.push(`<li><b>${p.location}</b> (${p.town}): ${slots.map(([d, h]) => `${fmt.format(new Date(d))} ${h}`).join(', ')}</li>`);
+      missing.push(`<li><b>${p.location}</b><span>${p.town} · ${slots.map(([d, h]) => `${fmt.format(new Date(d))} ${h}`).join(', ')}</span></li>`);
       continue;
     }
     const items = slotList(slots);
@@ -39,9 +41,10 @@ function render() {
       { maxWidth: 320 });
   }
   document.getElementById('count').textContent = `${n} punto${n === 1 ? '' : 's'}`;
-  const footer = document.getElementById('missing');
-  footer.hidden = !missing.length;
-  footer.innerHTML = `Sin ubicación en el mapa: <ul>${missing.join('')}</ul>`;
+  missingLink.hidden = !missing.length;
+  missingLink.textContent = `${missing.length} sin ubicación`;
+  document.getElementById('missing').innerHTML = missing.join('');
+  if (!missing.length) missingDialog.close();
 }
 
 function setRange(a, b) { from.value = a; to.value = b; render(); }
@@ -49,6 +52,13 @@ document.getElementById('today').onclick = () => setRange(plusDays(0), plusDays(
 document.getElementById('week').onclick = () => setRange(plusDays(0), plusDays(6));
 document.getElementById('all').onclick = () => setRange(plusDays(0), '');
 from.oninput = to.oninput = render;
+
+document.getElementById('info').onclick = () => document.getElementById('info-dialog').showModal();
+missingLink.onclick = e => { e.preventDefault(); missingDialog.showModal(); };
+for (const dialog of document.querySelectorAll('dialog')) {
+  dialog.querySelector('.close').onclick = () => dialog.close();
+  dialog.onclick = e => { if (e.target === dialog) dialog.close(); };
+}
 from.value = plusDays(0);
 
 fetch('data.json').then(r => r.json()).then(d => {
