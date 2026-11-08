@@ -794,6 +794,11 @@
 "lat": 39.995491,
 "lon": -0.0385759
 },
+"Castellón|CASTELLÓ DE LA PLANA|CASTELLÓ-HOSPITAL PROVINCIAL , C/ DOCTOR CLARA, 19": {
+"approx": false,
+"lat": 39.9841248,
+"lon": -0.0463454
+},
 "Castellón|CASTELLÓ DE LA PLANA|CASTELLÓ-HOSPITAL VITHAS , C/ SANTA MARIA ROSA MOLAS, 25": {
 "approx": false,
 "lat": 39.9413943,
@@ -1154,6 +1159,16 @@
 "lat": 39.6804554,
 "lon": -0.2209621
 },
+"Valencia|CARCAIXENT|CARCAIXENT-CENTRE INTEGRAL DE MAJORS-CIM SALA- PLANTA BAIXA, C/ SEBASTIÁN HERNÁNDEZ, 6": {
+"approx": false,
+"lat": 39.1154097,
+"lon": -0.4482429
+},
+"Valencia|CARCER|CÀRCER-CENTRO DE SALUD PLANTA BAJA, C/ MESTRE FRANCISCO GARCIA GRAU, Nº3": {
+"approx": false,
+"lat": 39.071179,
+"lon": -0.5654595
+},
 "Valencia|CARLET|CARLET-SALÓN GINER PLANTA BAIXA, PLAZA GINER 9-11": {
 "approx": false,
 "lat": 39.2266616,
@@ -1430,6 +1445,11 @@
 "lat": 38.9051584,
 "lon": -0.4196606
 },
+"Valencia|POBLA LLARGA, LA|LA POBLA LLARGA-CASA DE LA JOVENTUT SALA-PLANTA BAIXA, C/ S. VICENTE. 3": {
+"approx": false,
+"lat": 39.0844239,
+"lon": -0.475513
+},
 "Valencia|PUERTO DE SAGUNTO|PORT DE SAGUNT-Asociació Cultural Falla Plaça Mare Nostrum CASAL, CARRER CATALUNYA, Nº 30": {
 "approx": false,
 "lat": 39.6623008,
@@ -1500,10 +1520,20 @@
 "lat": 39.4885178,
 "lon": -1.0894782
 },
+"Valencia|RIBA-ROJA DE TURIA|RIBA-ROJA DEL TÙRIA CENTRO SOCIAL-1ª PLANTA, AVD/LA PAZ,1": {
+"approx": false,
+"lat": 39.5462418,
+"lon": -0.5716483
+},
 "Valencia|RIBA-ROJA DE TURIA|RIBA-ROJA-POLIGONO L'OLIVERAL-MEDMIX SPAIN SL AUTOBANCO-PARKING, AVD/ PUERTO DE ALICANTE,5": {
 "approx": false,
 "lat": 39.4849086,
 "lon": -0.5310858
+},
+"Valencia|ROTOVA|ROTOVA - CENTRE DE SALUT AUX. PLANTA BAIXA, C/. JAUME,I, Nº 84": {
+"approx": false,
+"lat": 38.9298022,
+"lon": -0.2590947
 },
 "Valencia|SAGUNT/SAGUNTO|SAGUNT-CENTRE DE SALUT PLANTA BAIXA, AV. SANTS DE LA PEDRA, 81-TRAS.": {
 "approx": false,
