@@ -4,6 +4,9 @@
     "config:recommended"
   ],
   "semanticCommits": "enabled",
+  "minimumReleaseAge": "3 days",
+  "prHourlyLimit": 0,
+  "prConcurrentLimit": 0,
   "cdnurl": {
     "managerFilePatterns": [
       "/\\.html?$/"
@@ -18,6 +21,13 @@
         "digest"
       ],
       "automerge": true
+    },
+    {
+      "description": "cdnjs gives no release dates, so the release age check cannot apply.",
+      "matchDatasources": [
+        "cdnjs"
+      ],
+      "minimumReleaseAgeBehaviour": "timestamp-optional"
     },
     {
       "description": "MapLibre GL JS 6 ships only ES modules, cdnjs has no classic script for it.",

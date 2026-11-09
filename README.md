@@ -19,7 +19,7 @@ The data comes from the [Centro de Transfusión](https://centro-transfusion.san.
 - `.github/workflows/update.yml`: daily data update.
 - `.github/workflows/pages.yml`: deploys `site/` to GitHub Pages.
 - `.github/workflows/ci.yml`: checks that run on each pull request. The PR title must follow [Conventional Commits](https://www.conventionalcommits.org/), for example `feat: add filter`.
-- `.github/workflows/renovate.yml`: weekly dependency updates.
+- `.github/workflows/renovate.yml`: daily dependency updates.
 
 ## Run locally
 
@@ -40,4 +40,4 @@ GitHub Pages is set to "GitHub Actions" as the source. The `pages.yml` workflow 
 
 ## Dependency updates
 
-`.github/workflows/renovate.yml` runs a self-hosted Renovate each Monday. It needs the repository secret `RENOVATE_TOKEN`: a personal access token with `repo` and `workflow` scope, so that Renovate can also update the files in `.github/workflows`. Minor and patch updates merge automatically after the CI workflow passes.
+`.github/workflows/renovate.yml` runs a self-hosted Renovate each day. It needs the repository secret `RENOVATE_TOKEN`: a personal access token with `repo` and `workflow` scope, so that Renovate can also update the files in `.github/workflows`. Minor and patch updates merge automatically after the CI workflow passes. Renovate waits 3 days after a release before it opens a PR. The cdnjs API gives no release dates, so the CDN libraries in `site/` skip this wait. Renovate opens all PRs at once, without an hourly or concurrent limit.

@@ -3,5 +3,6 @@
   "repositories": ["elKei24/sangre-vlc"],
   "onboarding": false,
   "requireConfig": "optional",
-  "branchPrefix": "renovate-self/"
+  "branchPrefix": "renovate-self/",
+  "gitAuthor": "Elias Keis <13063245+elKei24@users.noreply.github.com>"
 }
