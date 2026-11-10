@@ -99,6 +99,11 @@
 "lat": 38.3609507,
 "lon": -0.4280828
 },
+"Alicante|ALICANTE|ALICANTE-C.S. PARQUE LO MORANT, ENTRADA POR AVD. UNICEF-HOSPITAL DE DIA SALUD MENTAL, C/ MAESTRO ALONSO, 109": {
+"approx": false,
+"lat": 38.367312,
+"lon": -0.4861177
+},
 "Alicante|ALICANTE|ALICANTE-C.S. SAN BLAS, SALA PREPARACIÓN AL PARTO, C/ MAESTRO LATORRE, 9": {
 "approx": false,
 "lat": 38.3494565,
@@ -343,6 +348,11 @@
 "approx": false,
 "lat": 38.2626506,
 "lon": -0.6875922
+},
+"Alicante|ELCHE|ELCHE-BMW BENIGAR, SALA DE FORMACIÓN 1ªPLANTA, POLIGONO INDUSTRIAL CARRÚS C/ MONOVAR": {
+"approx": false,
+"lat": 38.2804111,
+"lon": -0.7206154
 },
 "Alicante|ELCHE|ELCHE-CENTRO DE SALUD DR. SAPENA 1ª PLANTA, C/ DR. SAPENA, Nº 91": {
 "approx": false,
@@ -603,6 +613,11 @@
 "approx": false,
 "lat": 38.1795278,
 "lon": -0.8701964
+},
+"Alicante|SAN VICENTE DEL RASPEIG|SAN VICENTE DEL RASPEIG-CENTRO SOCIAL MUNICIPAL, SALA EXPOSICIONES, C/ CERVANTES, 10-12": {
+"approx": false,
+"lat": 38.3960386,
+"lon": -0.5229748
 },
 "Alicante|SAN VICENTE DEL RASPEIG|SAN VICENTE DEL RASPEIG-HOSPITAL, (HALL DE CONSULTAS), C/ LILLO JUAN, 137": {
 "approx": false,
@@ -1189,6 +1204,11 @@
 "lat": 39.2266616,
 "lon": -0.5181475
 },
+"Valencia|CASTELLAR (VALENCIA)|46026 - CASTELLAR - CENTRO DE SALUD ZONA PEDIATRIA - PLANTA BAJA, C/ VICENTE PUCHOL Nº 11": {
+"approx": true,
+"lat": 39.432537,
+"lon": -0.3590654
+},
 "Valencia|CASTELLÓ|CASTELLÓ-LLAR DEL JUBILAT SALA-PLANTA BAJA, AVDA. DE CUBA, Nº 2": {
 "approx": false,
 "lat": 40.3793235,
@@ -1228,6 +1248,11 @@
 "approx": false,
 "lat": 39.1632799,
 "lon": -0.2569858
+},
+"Valencia|EL GENOVÉS|EL GENOVÉS-AJUNTAMENT 1º PISO SALON DE PLENOS, PLZA. INMACULADA, 3": {
+"approx": true,
+"lat": 38.9884181,
+"lon": -0.4704196
 },
 "Valencia|ENGUERA|ENGUERA - CENTRE DE SALUT GIMNASIO (Planta 1a), C/ MANUEL CIGES APARICIO, 15 (CANT. AVDA. CONSTITUCIÓ S/N)": {
 "approx": false,
@@ -1324,6 +1349,11 @@
 "lat": 39.4916777,
 "lon": -0.4579615
 },
+"Valencia|MANISES|MANISES-HOSPITAL DE MANISES HALL PRINCIPAL-PLANTA BAJA, AVD.GENERALITAT VALENCIANA 50": {
+"approx": false,
+"lat": 39.4902428,
+"lon": -0.4609457
+},
 "Valencia|MANISES|MANISES-I.E.S. PERE BOIL SALÓN DE ACTOS, C/ CERAMISTA ALFONS BLAT, 20": {
 "approx": false,
 "lat": 39.4986273,
@@ -1369,6 +1399,11 @@
 "approx": true,
 "lat": 39.5450484,
 "lon": -0.3941015
+},
+"Valencia|MONTESA|MONTESA-CASA DE CULTURA PLANTA BAJA, C/ HERMENEGILDO MONLEÓN, 4 Y 6": {
+"approx": false,
+"lat": 38.9492699,
+"lon": -0.650027
 },
 "Valencia|OLIVA|OLIVA - CAIXA POPULAR HALL PLANTA BAJA, AV. LOYGORRI, 46": {
 "approx": false,
@@ -1544,6 +1579,11 @@
 "approx": false,
 "lat": 39.4849086,
 "lon": -0.5310858
+},
+"Valencia|ROCAFORT|ROCAFORT CENTRO DE SALUD, C/ BARÓN TERRATEIG, Nº 7": {
+"approx": false,
+"lat": 39.5290726,
+"lon": -0.41115
 },
 "Valencia|ROTOVA|ROTOVA - CENTRE DE SALUT AUX. PLANTA BAIXA, C/. JAUME,I, Nº 84": {
 "approx": false,
@@ -1765,6 +1805,11 @@
 "lat": 39.5322728,
 "lon": -0.3506041
 },
+"Valencia|VALÈNCIA|46019-FALLA MUSICO ESPI-GRABADOR FABREGAT CASAL FALLER, C/ GRABADOR FABREGAT, 15": {
+"approx": false,
+"lat": 39.4967181,
+"lon": -0.3729003
+},
 "Valencia|VALÈNCIA|46019-HOGAR DEL JUBILADO SAN JUAN DE LA PEÑA SALA PLANTA BAJA, C/ SAN JUAN DE LA PEÑA, Nº 3 Y 5": {
 "approx": false,
 "lat": 39.4957192,
@@ -1984,6 +2029,11 @@
 "approx": false,
 "lat": 39.4770084,
 "lon": -0.3734821
+},
+"Valencia|VILAMARXANT|VILAMARXANT-CENTRE DE SALUT PLANTA BAIXA, CARRER FONT NOVA, 0": {
+"approx": false,
+"lat": 39.5675626,
+"lon": -0.6236435
 },
 "Valencia|VINALESA|VINALESA - CONSULTORI AUXILIAR VESTIBUL d'ENTRADA (planta baixa), C/ DE LA YUTERA, 6": {
 "approx": true,
