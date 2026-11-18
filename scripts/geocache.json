@@ -479,6 +479,11 @@
 "lat": 38.2674993,
 "lon": -0.6766355
 },
+"Alicante|ELCHE|ELCHE-SER MARATÓN CIUTAT D'ELX CENTRE DE CONGRESSOS, C/ FILET DE FORA, 1": {
+"approx": false,
+"lat": 38.2636138,
+"lon": -0.6957483
+},
 "Alicante|ELCHE|ELCHE-SOLO DONACIÓN DE PLASMA CON CITA PREVIA-ELCHE HOSPITAL GENERAL , HOSPITAL DE DIA-HEMATOLOGÍA (PUERTA PRINCIPAL )C/ ALMAZARA Nº 11": {
 "approx": true,
 "lat": 38.2653307,
@@ -498,6 +503,11 @@
 "approx": false,
 "lat": 38.4906998,
 "lon": -0.8036104
+},
+"Alicante|ELDA|ELDA-COMPARSA DE CONTRABANDISTAS , C/ MAGDALENA MAESTRE, 25": {
+"approx": false,
+"lat": 38.4801313,
+"lon": -0.7962391
 },
 "Alicante|ELDA|ELDA-COMPARSA DE CONTRABANDISTAS , CALLE ANDRES AMADO, 25": {
 "approx": false,
@@ -669,6 +679,7 @@
 "lat": 38.0901937,
 "lon": -0.9539422
 },
+"Alicante|PARTIDA LA FOIA (ELCHE)|LA HOYA-CENTRO JUVENIL LA HOYA SALA MULTIUSOS, CARRER TRANSFORMADOR, S/N": null,
 "Alicante|PEDREGUER|PEDREGUER-CASA DE LA CULTURA, SALA DE EXPOSICIONES, C/ GLORIETA DE LA CREU, Nº 14": {
 "approx": false,
 "lat": 38.7949367,
@@ -949,6 +960,11 @@
 "lat": 39.8909349,
 "lon": -0.0911683
 },
+"Castellón|BURRIANA|BURRIANA-I.E.S. JAUME I , CAMÍ LLOMBAI, 21": {
+"approx": false,
+"lat": 39.8868833,
+"lon": -0.0947793
+},
 "Castellón|CALIG|CALIG-CENTRO DE SALUD HALL, PLAZA DR. QUIXAL, S/N": {
 "approx": false,
 "lat": 40.4617798,
@@ -1199,6 +1215,11 @@
 "lat": 39.2024194,
 "lon": -0.3868346
 },
+"Valencia|ALBAL|ALBAL-CASA CULTURA HALL ENTRADA, C/ MESTRE RAMON SANCHIS": {
+"approx": false,
+"lat": 39.3981195,
+"lon": -0.4086867
+},
 "Valencia|ALBAL|ALBAL-CENTRO DE SALUD 1º PISO-FISIO., C/ REGNE DE VALENCIA, 1": {
 "approx": false,
 "lat": 39.3980497,
@@ -1239,6 +1260,11 @@
 "lat": 39.4237783,
 "lon": -0.3918677
 },
+"Valencia|ALFARA DEL PATRIARCA|ALFARA PATRIARCA - \"CENTRE CÍVIC\" SALA (PLANTA BAIXA), C/ MAESTRO PALAU, 15": {
+"approx": false,
+"lat": 39.543662,
+"lon": -0.3842059
+},
 "Valencia|ALGEMESI|ALGEMESI-CASAL FESTER-SALA REX SALA-PLANTA BAIXA, CARRER NOU DEL CONVENT, 82": {
 "approx": false,
 "lat": 39.1913072,
@@ -1258,6 +1284,11 @@
 "approx": false,
 "lat": 39.51186,
 "lon": -0.3562976
+},
+"Valencia|ALMASSERA|ALMÀSSERA-Edificio Museo de la Huerta PLANTA BAJA, AVDA DEL MAR 24": {
+"approx": false,
+"lat": 39.5127024,
+"lon": -0.3508352
 },
 "Valencia|ALMOINES|ALMOINES - CENTRE CULTURAL LA FABRICA PLANTA BAIXA, C/ LA FABRICA Nº 2": {
 "approx": false,
@@ -1318,6 +1349,11 @@
 "approx": false,
 "lat": 39.0200878,
 "lon": -0.6413175
+},
+"Valencia|ANTELLA|ANTELLA-LLAR DEL JUBILAT LLAR DEL JUBILAT-SALA, C/ NOU D'OCTUBRE, 2": {
+"approx": false,
+"lat": 39.0806451,
+"lon": -0.5938991
 },
 "Valencia|AYORA|AYORA - TEATRO REGIO SALA (planta baja), C/ MARQUESA DE ZENETE, 57": {
 "approx": false,
@@ -1469,6 +1505,11 @@
 "lat": 39.1154097,
 "lon": -0.4482429
 },
+"Valencia|CARCAIXENT|CARCAIXENT-FALLA JAUME I EL CONQUERIDOR-CAIXA POPULAR CASAL, C/ MARIA BENLLIURE, 17": {
+"approx": false,
+"lat": 39.1194816,
+"lon": -0.4508686
+},
 "Valencia|CARCER|CÀRCER-CENTRO DE SALUD PLANTA BAJA, C/ MESTRE FRANCISCO GARCIA GRAU, Nº3": {
 "approx": false,
 "lat": 39.071179,
@@ -1543,6 +1584,11 @@
 "approx": false,
 "lat": 38.9813006,
 "lon": -0.6881696
+},
+"Valencia|FAURA|FAURA-CENTRO DE SALUD SALA D'ESPERA-PRIMER PIS, PLAÇA. DR. FLEMING, 8": {
+"approx": false,
+"lat": 39.7279577,
+"lon": -0.2606557
 },
 "Valencia|FOIOS|FOIOS-CENTRE DE MAJORS SALA ACTES, PLAÇA DE LA CREU": {
 "approx": false,
@@ -2160,6 +2206,11 @@
 "lat": 39.5322728,
 "lon": -0.3506041
 },
+"Valencia|VALÈNCIA|46018-CIUDAD ADMINISTRATIVA CA 9O-SOLO EMPLEADOS SALA 1, C/ DE LA DEMOCRACIA, 77": {
+"approx": false,
+"lat": 39.4714439,
+"lon": -0.4039829
+},
 "Valencia|VALÈNCIA|46019-FALLA MUSICO ESPI-GRABADOR FABREGAT CASAL FALLER, C/ GRABADOR FABREGAT, 15": {
 "approx": false,
 "lat": 39.4967181,
@@ -2305,6 +2356,11 @@
 "lat": 39.4697065,
 "lon": -0.3763353
 },
+"Valencia|VALÈNCIA|VALENCIA-BANCO SANTANDER SALA DE FORMACION - PLANTA 5ª SOLO EMPLEADOS, C/ BARCAS, 8": {
+"approx": false,
+"lat": 39.4702934,
+"lon": -0.3742823
+},
 "Valencia|VALÈNCIA|VALENCIA-CAMPUS DE TARONGERS-AULARI SUD AUTOBANC, AVINGUDA DELS TARONGERS, S/N": {
 "approx": false,
 "lat": 39.4759635,
@@ -2414,6 +2470,11 @@
 "approx": false,
 "lat": 39.4789232,
 "lon": -0.3665923
+},
+"Valencia|VALÈNCIA|VALÈNCIA-CORTS VALENCIANES -SOLO EMPLEADOS- L'ANDANA., PLAZA DE SAN LORENZO, 4": {
+"approx": false,
+"lat": 39.4778128,
+"lon": -0.3748314
 },
 "Valencia|VALÈNCIA|VALÈNCIA-UCV SEDE TRINITARIOS (SOLO ALUMNOS Y PROFESORES) SALÓN DE ACTOS, CALLE DE TRINITARIOS, 2": {
 "approx": false,
