@@ -494,6 +494,11 @@
 "lat": 38.2653307,
 "lon": -0.6988391
 },
+"Alicante|ELDA|ELDA-CENTRO CIVICO Y JUVENIL SALON POLIVALENTE, AVDA CHAPI,36- PLAZA DE LA FICIA": {
+"approx": false,
+"lat": 38.4744176,
+"lon": -0.7955264
+},
 "Alicante|ELDA|ELDA-CENTRO SALUD ACACIAS, 2ª PtA.PREPARACIÓN AL PARTO, AVDA. DE LAS ACACIAS, 31": {
 "approx": false,
 "lat": 38.4716404,
@@ -729,6 +734,11 @@
 "approx": false,
 "lat": 38.1017964,
 "lon": -0.8459773
+},
+"Alicante|REDOVAN|REDOVAN-MARATÓN DONACIÓN DE SANGRE COLEGIO PUBLICO SAGRADOS CORAZONES, C/ JUAN XXIII S/N": {
+"approx": false,
+"lat": 38.1139408,
+"lon": -0.9077701
 },
 "Alicante|RELLEU|RELLEU-BAJOS DEL AYUNTAMIENTO, , C/ PLAZA DE LA CONSTITUCION,1": {
 "approx": true,
@@ -1700,6 +1710,11 @@
 "lat": 38.970557,
 "lon": -0.5933063
 },
+"Valencia|L ALCUDIA|L'ALCÚDIA-CENTRE ENRIC VALOR-FESTA SOLIDÀRIA DE LA DONACIÓ DE SANG PLANTA BAIXA, C/ PICASSO, 16": {
+"approx": false,
+"lat": 39.1979717,
+"lon": -0.5082887
+},
 "Valencia|L ELIANA|L'ELIANA - CENTRO DE SALUD 1er.PISO, C/ ROSALES, Nº 23": {
 "approx": false,
 "lat": 39.5643163,
@@ -1945,6 +1960,11 @@
 "approx": false,
 "lat": 39.6150571,
 "lon": -0.3093186
+},
+"Valencia|PUÇOL|PUÇOL-Espai Social dels Majors SALA, PLAÇA COMUNITAT VALENCIANA, 20-BAIX": {
+"approx": false,
+"lat": 39.6172562,
+"lon": -0.311999
 },
 "Valencia|PUÇOL|PUÇOL-IES PUÇOL AULA-PLANTA BAIXA, CARRER CORTS VALENCIANES, 31": {
 "approx": false,
