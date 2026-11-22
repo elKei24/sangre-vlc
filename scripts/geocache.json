@@ -534,6 +534,11 @@
 "lat": 38.4785265,
 "lon": -0.8053643
 },
+"Alicante|FINESTRAT|FINESTRAT-CENTRE DE SALUT, , CARRER SIERRA CORTINA,5": {
+"approx": false,
+"lat": 38.546209,
+"lon": -0.1728943
+},
 "Alicante|FINESTRAT|FINESTRAT: EMPRESAS (ENERGY SISTEM-PORT HOTELS-MIRAI) SALA 1º PLANTA JUNTO ASCENSOR, C/CALPE ,1": {
 "approx": false,
 "lat": 38.5402776,
@@ -653,6 +658,11 @@
 "approx": false,
 "lat": 38.3823899,
 "lon": -0.7626508
+},
+"Alicante|ONDARA|ONDARA, ESPAI JOVE NEBULOSA, SALON 1ª.PLANTA, CARRER PICASSO,3": {
+"approx": false,
+"lat": 38.8255333,
+"lon": 0.0153055
 },
 "Alicante|ONIL|ONIL-CASA DE CULTURA, SALA JOVE, AVD. DE LA CONSTITUCIÓN 21": {
 "approx": false,
@@ -834,6 +844,11 @@
 "approx": false,
 "lat": 38.5345527,
 "lon": -0.8194617
+},
+"Alicante|TEULADA|TEULADA MORAIRA - AUDITORI,MARATON DE VERANO , CALLE VICENTE BERENGUER Nº2": {
+"approx": false,
+"lat": 38.6880943,
+"lon": 0.1344619
 },
 "Alicante|TORRELLANO|TORRELLANO-CENTRO SOCIAL, , C/ LA PAU, 77": {
 "approx": true,
@@ -1039,6 +1054,11 @@
 "approx": false,
 "lat": 39.9763182,
 "lon": -0.0490666
+},
+"Castellón|CASTELLÓ DE LA PLANA|CASTELLÓ-COLEGIO RAMIRO IZQUIERDO DONACIÓN EXCLUSIVA PARA EL CENTRO, CAMÍ CAMINÁS, 82,": {
+"approx": false,
+"lat": 39.9982705,
+"lon": -0.0203677
 },
 "Castellón|CASTELLÓ DE LA PLANA|CASTELLÓ-ESTADIO SKYFI CASTALIA PARKING, C/ HUESCA S/N": {
 "approx": false,
@@ -1249,6 +1269,11 @@
 "approx": false,
 "lat": 39.2024194,
 "lon": -0.3868346
+},
+"Valencia|ALBALAT DELS SORELLS|ALBALAT DELS SORELLS-CONSULTORIO AUXILIAR PLANTA BAJA, C/ DEL MOLI, S/N": {
+"approx": false,
+"lat": 39.5425129,
+"lon": -0.3810276
 },
 "Valencia|ALBAL|ALBAL-CASA CULTURA HALL ENTRADA, C/ MESTRE RAMON SANCHIS": {
 "approx": false,
@@ -1826,6 +1851,11 @@
 "lat": 38.9492699,
 "lon": -0.650027
 },
+"Valencia|MUSEROS|MUSEROS-CASA DE CULTURA SEGON PIS, AVINGUDA DEL PAÍS VALENCIÀ, NÚM.17": {
+"approx": false,
+"lat": 39.5628668,
+"lon": -0.3426438
+},
 "Valencia|NAQUERA|NAQUERA - CONSULTORIO AUXILIAR VESTIBULO (PLANTA BAJA), C/ CONSTITUCIÓN, 2": {
 "approx": false,
 "lat": 39.657416,
@@ -1991,6 +2021,11 @@
 "lat": 39.4662995,
 "lon": -0.4254843
 },
+"Valencia|RAFELBUNYOL|RAFELBUNYOL-CASA DE LA CULTURA SALA D'AUDIOVISUALS-1er pis, CAMÍ FONDO, 2 (CAMÍ MARTIRS, S/N)": {
+"approx": true,
+"lat": 39.5884632,
+"lon": -0.3325421
+},
 "Valencia|REAL|REAL-BARRACO SALA-PLANTA BAIXA, C/ JOSÉ MARIÁ REGOLF, S/N": {
 "approx": false,
 "lat": 39.3334015,
@@ -2056,6 +2091,11 @@
 "lat": 39.358111,
 "lon": -0.4117195
 },
+"Valencia|SOLLANA|SOLLANA-CONSULTORIO HALL, PLAZA JOAN FUSTER, 3": {
+"approx": false,
+"lat": 39.2796443,
+"lon": -0.3835452
+},
 "Valencia|SOLLANA|SOLLANA-GREENMED COMEDOR-SOLO EMPLEADOS-, AVD. EL ROMANI, S/N": {
 "approx": false,
 "lat": 39.3067819,
@@ -2075,6 +2115,11 @@
 "approx": false,
 "lat": 39.0699958,
 "lon": -0.2694007
+},
+"Valencia|TORRENT|TORRENT - ANTIC MERCAT MUNICIPAL SALA CIVICA (2a planta), C/ CERVANTES, 1 (PÇA. COLON)": {
+"approx": false,
+"lat": 39.4361614,
+"lon": -0.4615236
 },
 "Valencia|TORRENT|TORRENT - CENTRE MAJORS VERGE L'OLIVAR SALA DE JOCS (planta baixa), C/ MARE DE DEU DE L'OLIVAR, 40": {
 "approx": false,
@@ -2366,6 +2411,11 @@
 "lat": 39.461124,
 "lon": -0.3452861
 },
+"Valencia|VALÈNCIA|46023-FALLA AVDA.FRANCIA-TORAN I OLMOS (PAROTET) CASAL-PLANTA BAIXA, C/ ALFRED TORAN I OLMOS, 3": {
+"approx": false,
+"lat": 39.4608085,
+"lon": -0.350359
+},
 "Valencia|VALÈNCIA|46023-FALLA LO RAT PENAT CASAL, C/ LO RAT PENAT, Nº 2-B": {
 "approx": false,
 "lat": 39.4650585,
@@ -2590,6 +2640,11 @@
 "approx": false,
 "lat": 38.9878874,
 "lon": -0.5241085
+},
+"Valencia|XATIVA|XATIVA-CENTRO DE SALUD GIMNASIO MATRONA-PLANTA BAJA, AVDA. AUSIAS MARCH, S/N": {
+"approx": false,
+"lat": 38.9930759,
+"lon": -0.5705555
 },
 "Valencia|XATIVA|XATIVA-HOSPITAL LLUÍS ALCANYÍS -HALL-SALÓN DE ACTOS-1º PISO, CTRA. XATIVA A SILLA KM 2": {
 "approx": false,
