@@ -94,6 +94,11 @@
 "lat": 38.3656993,
 "lon": -0.4311114
 },
+"Alicante|ALICANTE|ALICANTE-AUTOBANCO HISTORIADOR VICENTE RAMOS-ESPECIAL NAVIDAD ENTRE CORREOS Y PIZZERIA, AVD. HISTORIADOR VICENTE RAMOS 1": {
+"approx": false,
+"lat": 38.3656993,
+"lon": -0.4311114
+},
 "Alicante|ALICANTE|ALICANTE-AUTOBANCO PLAZA SÉNECA, ANTIGUA ESTACIÓN DE AUTOBUSES, PLAZA SÉNECA S/N": {
 "approx": false,
 "lat": 38.3411839,
@@ -130,6 +135,11 @@
 "lon": -0.4861177
 },
 "Alicante|ALICANTE|ALICANTE-C.S. SAN BLAS, SALA PREPARACIÓN AL PARTO, C/ MAESTRO LATORRE, 9": {
+"approx": false,
+"lat": 38.3494565,
+"lon": -0.5003065
+},
+"Alicante|ALICANTE|ALICANTE-C.S. SAN BLAS-ESPECIAL NAVIDAD SALA PREPARACIÓN AL PARTO, C/ MAESTRO LATORRE, 9": {
 "approx": false,
 "lat": 38.3494565,
 "lon": -0.5003065
@@ -258,6 +268,11 @@
 "approx": false,
 "lat": 38.716888,
 "lon": -0.6585729
+},
+"Alicante|BENEJUZAR|BENEJUZAR-CONSULTORIO AUXILIAR , C/ SALVADOR DALI, Nº 63": {
+"approx": false,
+"lat": 38.0757339,
+"lon": -0.8389327
 },
 "Alicante|BENFERRI|BENFERRI-CENTRO CULTURAL CENTRO CULTURAL, C/ JOSE MARIA PUCHADES S/N": {
 "approx": false,
@@ -394,6 +409,11 @@
 "lat": 38.8377433,
 "lon": 0.1117175
 },
+"Alicante|DENIA|DENIA-CENTRO SOCIAL SALA D'OCI, C/ CALDERON, 4": {
+"approx": false,
+"lat": 38.8405556,
+"lon": 0.1114813
+},
 "Alicante|DENIA|DENIA-IES HISTORIADOR CHABAS, SALON DE USOS MULTIPLES, C/ CETO, 1": {
 "approx": false,
 "lat": 38.8304379,
@@ -485,6 +505,11 @@
 "lon": -0.77039
 },
 "Alicante|ELCHE|ELCHE-HOSPITAL SOLIDARIO NAVIDAD GIMNASIO, C/ ALMAZARA, Nº 11": {
+"approx": false,
+"lat": 38.323983,
+"lon": -0.77039
+},
+"Alicante|ELCHE|ELCHE-HOSPITAL SOLIDARIO NAVIDAD, GIMNASIO, C/ ALMAZARA, Nº 11": {
 "approx": false,
 "lat": 38.323983,
 "lon": -0.77039
@@ -950,6 +975,11 @@
 "lat": 38.6291095,
 "lon": -0.8644674
 },
+"Alicante|VILLENA|VILLENA-COMPARSA ESTUDIANTES-LA TROYICA , PLAZA DE LAS MALVAS, 5": {
+"approx": false,
+"lat": 38.6300128,
+"lon": -0.864366
+},
 "Alicante|VILLENA|VILLENA-COMPARSA MOROS REALISTAS , C/ SAN BENITO, 1": {
 "approx": false,
 "lat": 38.629399,
@@ -1215,6 +1245,11 @@
 "lat": 39.8924531,
 "lon": -0.1171985
 },
+"Castellón|ONDA|ONDA-CENTRO DE SALUD ONDA I , CARRER BALMES, S/N,": {
+"approx": false,
+"lat": 39.9623185,
+"lon": -0.269276
+},
 "Castellón|ONDA|ONDA-CENTRO DE SALUD ONDA I CONSULTAS PEDIATRÍA, CARRER BALMES, S/N,": {
 "approx": false,
 "lat": 39.9623185,
@@ -1325,10 +1360,20 @@
 "lat": 39.1164369,
 "lon": -0.5201838
 },
+"Valencia|ALBORAYA|ALBORAIA-AUTOBANCO AUTOBANCO, C/ CANONIGO JULIA, 11": {
+"approx": false,
+"lat": 39.5008282,
+"lon": -0.3524541
+},
 "Valencia|ALBORAYA|ALBORAIA-HOGAR DEL JUBILADO PLANTA BAJA, C/ PORTALET": {
 "approx": false,
 "lat": 39.5000886,
 "lon": -0.3505649
+},
+"Valencia|ALCANTERA DE XUQUER|ALCANTERA DEL XUQUER-CASA DE LA MUSICA PLANTA BAJA, C/ MAJOR, 12": {
+"approx": false,
+"lat": 39.0699726,
+"lon": -0.5593101
 },
 "Valencia|ALCASSER|ALCÀSSER - CENTRE SOCIAL SALA POLIVALENT (planta baixa), C/ SANT ANTONI, 40": {
 "approx": false,
@@ -1349,6 +1394,11 @@
 "approx": false,
 "lat": 39.4607796,
 "lon": -0.4572325
+},
+"Valencia|ALFAFAR|ALFAFAR-CC MN4 Primera planta, CARRER ALCALDE JOSÉ PUERTES, S/N": {
+"approx": false,
+"lat": 39.4114986,
+"lon": -0.3826429
 },
 "Valencia|ALFAFAR|ALFAFAR-CENTRO SALUD -SALA MATRONAS-2ºPISO, C/ DELS FURS, 23": {
 "approx": false,
@@ -1495,6 +1545,11 @@
 "lat": 39.2135344,
 "lon": -0.5267415
 },
+"Valencia|BENIPARRELL|BENIPARRELL - POLIESPORTIU MUNICIPAL (DAVANT LA CASA DE LA CULTURA) AUTOBANC (PARKING POLIESPORTIU), C/ DE LES ESCOLES, 51": {
+"approx": false,
+"lat": 39.3826969,
+"lon": -0.4103246
+},
 "Valencia|BENISANO|BENISSANÓ-CENTRE SOCIAL CENTRE SOCIAL, CARRER LA PAU,": {
 "approx": false,
 "lat": 39.6151377,
@@ -1640,6 +1695,11 @@
 "lat": 39.4077061,
 "lon": -0.4062225
 },
+"Valencia|CHELLA|CHELLA - CENTRO CULTURAL SALA (planta baja), AVDA. RONDA BLASCO IBÁÑEZ, 12": {
+"approx": false,
+"lat": 39.0385925,
+"lon": -0.6599234
+},
 "Valencia|CHESTE|CHESTE-CENTRO DE SALUD- PLANTA BAJA, C/ ESPERANTISTA E. ARNAU, S/N": {
 "approx": false,
 "lat": 39.4979224,
@@ -1759,6 +1819,11 @@
 "approx": false,
 "lat": 39.5218449,
 "lon": -0.4155119
+},
+"Valencia|GODELLA|GODELLA-COLEGIO EDELWEISS SCHOOL -CAMPOLIVAR- PECERA, C/ CARRER DE PINO PANERA,19": {
+"approx": true,
+"lat": 39.5184276,
+"lon": -0.4103168
 },
 "Valencia|GODELLETA|GODELLETA CENTRO DE SALUD, C/ COMUNIDAD VALENCIAN S/N": {
 "approx": false,
@@ -1895,6 +1960,11 @@
 "approx": false,
 "lat": 38.9492699,
 "lon": -0.650027
+},
+"Valencia|MONTROI / MONTROY|MONTROI-AYUNTAMIENTO PLANTA BAIXA, C/ RAVAL, 56": {
+"approx": false,
+"lat": 39.3418358,
+"lon": -0.6134652
 },
 "Valencia|MUSEROS|MUSEROS-CASA DE CULTURA SEGON PIS, AVINGUDA DEL PAÍS VALENCIÀ, NÚM.17": {
 "approx": false,
@@ -2070,6 +2140,11 @@
 "approx": false,
 "lat": 39.4662995,
 "lon": -0.4254843
+},
+"Valencia|QUATRETONDA|QUATRETONDA - CENTRE SOCIAL PLANTA BAIXA, C/ LLUTXENT, 1": {
+"approx": false,
+"lat": 38.944934,
+"lon": -0.400052
 },
 "Valencia|RAFELBUNYOL|RAFELBUNYOL-CASA DE LA CULTURA SALA D'AUDIOVISUALS-1er pis, CAMÍ FONDO, 2 (CAMÍ MARTIRS, S/N)": {
 "approx": true,
@@ -2325,6 +2400,11 @@
 "approx": false,
 "lat": 39.474659,
 "lon": -0.3598059
+},
+"Valencia|VALÈNCIA|46010 FALLA LA BICICLETA CASAL, CALLE ALMELA I VIVES Nº 5": {
+"approx": false,
+"lat": 39.47762,
+"lon": -0.356052
 },
 "Valencia|VALÈNCIA|46010-CENTRO SALUD TRINITAT HALL PEDIATRIA, C/ FLORA, 7": {
 "approx": false,
