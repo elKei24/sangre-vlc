@@ -44,6 +44,11 @@
 "lat": 38.6982348,
 "lon": -0.4747619
 },
+"Alicante|ALCOI|ALCOI-HOSPITAL VERGE DELS LLIRIS CONSULTAS EXTERNAS SALA DE ESPERA B, POLIGON CARAMANXEL, S/N": {
+"approx": true,
+"lat": 38.6982348,
+"lon": -0.4747619
+},
 "Alicante|ALCOI|ALCOI-NIRVEL COSMETICS EXCLUSIVA PERSONAL SALA CDT, POLÍGONO INDUSTRIAL COTES BAIXES C/CNº9": {
 "approx": false,
 "lat": 38.7109615,
@@ -910,6 +915,11 @@
 "lat": 37.9764494,
 "lon": -0.6827531
 },
+"Alicante|TORREVIEJA|TORREVIEJA SEDE UNIVERSITARIA C/ CANÓNIGO TORRES 12 ( ENTRADA POR C/ CONCEPCIÓN 4), 2ª PLANTA": {
+"approx": true,
+"lat": 37.9775416,
+"lon": -0.6828446
+},
 "Alicante|TORREVIEJA|TORREVIEJA SEDE UNIVERSITARIA C/ CONCEPCIÓN, 4, 2ª PLANTA": {
 "approx": true,
 "lat": 37.9775416,
@@ -1400,6 +1410,11 @@
 "lat": 39.4114986,
 "lon": -0.3826429
 },
+"Valencia|ALFAFAR|ALFAFAR-CC MN4 Primera planta, CARRER.ALCALDE JOSÉ PUERTES, S/N": {
+"approx": false,
+"lat": 39.4114986,
+"lon": -0.3826429
+},
 "Valencia|ALFAFAR|ALFAFAR-CENTRO SALUD -SALA MATRONAS-2ºPISO, C/ DELS FURS, 23": {
 "approx": false,
 "lat": 39.4237783,
@@ -1499,6 +1514,11 @@
 "approx": false,
 "lat": 39.0806451,
 "lon": -0.5938991
+},
+"Valencia|AYORA|AYORA - TEATRO REGIO SALA (planta 2ª), C/ MARQUESA DE ZENETE, 57": {
+"approx": false,
+"lat": 39.0599044,
+"lon": -1.0579793
 },
 "Valencia|AYORA|AYORA - TEATRO REGIO SALA (planta baja), C/ MARQUESA DE ZENETE, 57": {
 "approx": false,
@@ -1734,6 +1754,11 @@
 "approx": false,
 "lat": 39.1678387,
 "lon": -0.2468231
+},
+"Valencia|CULLERA|CULLERA-MERCADO MUNICIPAL MERCADO MUNICIPAL-SALON MULTIUSOS, PLAÇA DE LA VERGE, S/N": {
+"approx": false,
+"lat": 39.1647751,
+"lon": -0.2534766
 },
 "Valencia|CULLERA|CULLERA-MERCADO MUNICIPAL SALON MULTIUSOS, PLAÇA DE LA VERGE,S/N": {
 "approx": false,
@@ -2157,6 +2182,11 @@
 "lon": -0.6074939
 },
 "Valencia|REQUENA|REQUENA-CENTRO DE SALUD CENTRO DE SALUD, AVD.CONSTITUCIÓN, 47": {
+"approx": false,
+"lat": 39.4884752,
+"lon": -1.09648
+},
+"Valencia|REQUENA|REQUENA-CENTRO DE SALUD SALA, AVD. CONSTITUCIÓN, Nº 47": {
 "approx": false,
 "lat": 39.4884752,
 "lon": -1.09648
